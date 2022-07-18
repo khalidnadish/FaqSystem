@@ -1,0 +1,1 @@
+import{k as e,l as s}from"./index.cd13aaad.js";function l(t){return e("MuiListItemText",t)}const i=s("MuiListItemText",["root","multiline","dense","inset","primary","secondary"]);var r=i;export{l as g,r as l};

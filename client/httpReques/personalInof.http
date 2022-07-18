@@ -1,0 +1,6 @@
+# show user prefix
+# GET http://localhost:3001/person/1
+ 
+#show user group 
+GET http://localhost:3001/person/getPersonCategory/1
+# database not connect

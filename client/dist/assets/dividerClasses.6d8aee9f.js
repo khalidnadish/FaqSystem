@@ -1,0 +1,1 @@
+import{k as e,l as t}from"./index.cd13aaad.js";function s(i){return e("MuiDivider",i)}const r=t("MuiDivider",["root","absolute","fullWidth","inset","middle","flexItem","light","vertical","withChildren","withChildrenVertical","textAlignRight","textAlignLeft","wrapper","wrapperVertical"]);var a=r;export{a as d,s as g};
