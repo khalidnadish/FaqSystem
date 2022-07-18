@@ -46,7 +46,7 @@ function khalid(req, res, next) {
 
 const server = app.listen(configData.port, (err) => {
   if (err) {console.log(err)}
-  console.log(` app listening on port ${configData.port}  `);
+  console.log(` app listening on port no ${configData.port}  `);
 });
 787;
 server.timeout = 1000 * 60 * 10; // 10 minutes
