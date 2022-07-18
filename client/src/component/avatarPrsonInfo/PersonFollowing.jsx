@@ -1,24 +1,19 @@
-import  Chip from '@mui/material/Chip';
-import { Badge } from "antd";
-import "antd/dist/antd.css";
+import BadgeBtn from '../badgeBtn/BadgeBtn';
+import { GiShadowFollower } from "react-icons/gi";
+
+
 const  PersonFollowing = ({ following }) => {
   return (
-    <Badge  count={following} offset={[0, 0]} status="blue">
-      <Chip
-        color="primary"
-         
-        sx={{
-          padding:"10px",
-          "& .MuiChip-label": {
-            color: "background.paper",
-            fontSize:"1rem",
-            padding:"5px",
-            margin:"5px"
-          }
-        }}
-        label={`Following`}
-      />
-    </Badge>
+<BadgeBtn
+    variant={"contained"}
+    startIcon={<GiShadowFollower />}
+    count={following}
+    xpad={"3px 10px 3px 10px"}
+    xcolor={"success"}
+    xborderColor="primary.light"
+    // onClick={() => setShowModal(true)}
+    toolTip="following"
+  />
   );
 };
 export default PersonFollowing

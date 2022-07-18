@@ -1,6 +1,6 @@
 import PlsHelpArea from "./PlsHelpArea";
 import TakeActionArea from "./TakeActionArea";
-import PersonVote from "./PersonVote";
+import PersonVote from "./PersonDownVote";
 import PersonReport from "./PersonReport";
 
 // import  FirstActionDone  from "./FirstActionDone";
@@ -43,7 +43,7 @@ function AvatarPrsonInfo({ userid }) {
       </Box>
       <Box sx={{ padding: "10px", width: "280px", margin: "auto", mt: 0 }}>
         <Divider sx={{marginBottom:"10px"}}>Info</Divider>
-        <Grid container spacing={1}>
+        <Grid container  spacing={1}>
          
          
           <Grid item xs={4}>
@@ -65,13 +65,13 @@ function AvatarPrsonInfo({ userid }) {
          
          
           <Grid item xs={12}>
-            <Grid container direction={"row"} mt={1}>
-              <Grid item xs={6}>
+            <Grid container direction={"row"} columns={8}>
+              <Grid item xs={4} width={"100%"}>
                 {dataIsLoading && (
                   <PersonFollower follower={data[0].follower} />
                 )}
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
                 {dataIsLoading && (
                   <PersonFollowing following={data[0].following1} />
                 )}

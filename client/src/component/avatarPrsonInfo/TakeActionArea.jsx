@@ -14,10 +14,10 @@ const  TakeActionArea=({ dataIsLoading })=> {
     >
       <Divider sx={{marginBottom:"10px",marginTop:"10px"}}>Take Action</Divider>
       <Grid container spacing={1}>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           {dataIsLoading && <PersonFollowAction />}
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           {dataIsLoading && <PersonDirectMsg />}
         </Grid>
       </Grid>

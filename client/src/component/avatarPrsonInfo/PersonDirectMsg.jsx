@@ -1,17 +1,19 @@
 
-import  Chip  from '@mui/material/Chip';
-
+ 
+import { IoIosPaperPlane } from "react-icons/io";
+import BadgeBtn from "../badgeBtn/BadgeBtn";
 const PersonDirectMsg=({})=> {
   return (
-    <Chip
-      color="warning"
-      size="small"
-      sx={{
-        width: "100%",
-        borderRadius: "8px",
-      }}
-      label={`Message`}
-    />
+    <BadgeBtn
+    variant={"contained"}
+    startIcon={<IoIosPaperPlane />}
+    // count={answer}
+    xpad={"3px 10px 3px 10px"}
+    xcolor={"primary"}
+    xborderColor="primary.light"
+    // onClick={() => setShowModal(true)}
+    toolTip="Answer's Create"
+  />
   );
 }
 

@@ -1,16 +1,17 @@
-
-import  Chip  from '@mui/material/Chip';
-const PersonFollowAction=({})=> {
+import BadgeBtn from "../badgeBtn/BadgeBtn";
+import { MdFollowTheSigns } from "react-icons/md";
+const PersonFollowAction = ({}) => {
   return (
-    <Chip
-      color="warning"
-      size="small"
-      sx={{
-        width: "100%",
-        borderRadius: "8px",
-      }}
-      label={`Follw`}
+    <BadgeBtn
+      variant={"contained"}
+      startIcon={<MdFollowTheSigns />}
+      // count={answer}
+      xpad={"3px 10px 3px 10px"}
+      xcolor={"primary"}
+      xborderColor="primary.light"
+      // onClick={() => setShowModal(true)}
+      toolTip="Answer's Create"
     />
   );
-}
-export default PersonFollowAction
+};
+export default PersonFollowAction;
