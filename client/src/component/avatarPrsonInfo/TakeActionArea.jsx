@@ -12,7 +12,7 @@ const  TakeActionArea=({ dataIsLoading })=> {
         padding: "5px",
       }}
     >
-      <Divider sx={{marginBottom:"10px",marginTop:"10px"}}>Take Action</Divider>
+      <Divider sx={{marginBottom:"3px",marginTop:"3px"}}>Take Action</Divider>
       <Grid container spacing={1}>
         <Grid item xs={6}>
           {dataIsLoading && <PersonFollowAction />}

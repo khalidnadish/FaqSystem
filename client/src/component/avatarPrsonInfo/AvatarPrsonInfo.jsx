@@ -1,7 +1,5 @@
 import PlsHelpArea from "./PlsHelpArea";
 import TakeActionArea from "./TakeActionArea";
-import PersonVote from "./PersonDownVote";
-import PersonReport from "./PersonReport";
 
 // import  FirstActionDone  from "./FirstActionDone";
 // import  JoininDate  from "./JoininDate";
@@ -17,6 +15,11 @@ import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
+import { GrUnlock } from "react-icons/gr";
+import { FaRegClock } from "react-icons/fa";
+import { BsCashCoin } from "react-icons/bs";
+
+import { Typography } from "@mui/material";
 function AvatarPrsonInfo({ userid }) {
   const { data, dataIsLoading } = useAxiosToGetData(
     `http://localhost:3001/person/${userid}`
@@ -32,6 +35,7 @@ function AvatarPrsonInfo({ userid }) {
           alt="Paella dish"
         />
       )}
+
       <Box sx={{ position: "relative" }}>
         {dataIsLoading && <PersonAvatar avatar={data[0].avatar} />}
         {dataIsLoading && (
@@ -41,11 +45,21 @@ function AvatarPrsonInfo({ userid }) {
           />
         )}
       </Box>
+
+      <Box mt={1.5}>
+        <Typography component={"a"} color={"primary"} variant="h7" ml={1}>
+          <GrUnlock />active</Typography>
+        <Typography component={"a"} color={"primary"} variant="h7" ml={1}>
+           <FaRegClock /> replay rate
+        </Typography>
+        <Typography component={"a"} color={"primary"} variant="h7" ml={1}>
+
+          <BsCashCoin /> balace{" "}
+        </Typography>
+      </Box>
       <Box sx={{ padding: "10px", width: "280px", margin: "auto", mt: 0 }}>
-        <Divider sx={{marginBottom:"10px"}}>Info</Divider>
-        <Grid container  spacing={1}>
-         
-         
+        <Divider sx={{ marginBottom: "10px" }}>Info</Divider>
+        <Grid container spacing={1}>
           <Grid item xs={4}>
             {dataIsLoading && (
               <PersonGroup
@@ -62,8 +76,7 @@ function AvatarPrsonInfo({ userid }) {
           <Grid item xs={4}>
             {dataIsLoading && <PersonAnswers answer={data[0].answer} />}
           </Grid>
-         
-         
+
           <Grid item xs={12}>
             <Grid container direction={"row"} columns={8}>
               <Grid item xs={4} width={"100%"}>
@@ -79,8 +92,9 @@ function AvatarPrsonInfo({ userid }) {
             </Grid>
           </Grid>
         </Grid>
-      <TakeActionArea dataIsLoading={dataIsLoading} />
-      <PlsHelpArea dataIsLoading={dataIsLoading} />
+
+        <TakeActionArea dataIsLoading={dataIsLoading} />
+        <PlsHelpArea dataIsLoading={dataIsLoading} />
       </Box>
     </>
   );

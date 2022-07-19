@@ -1,8 +1,12 @@
 import  Box from '@mui/material/Box';
 import  Typography  from '@mui/material/Typography';
 
+import { GrUnlock } from "react-icons/gr";
+import BadgeBtn from '../badgeBtn/BadgeBtn';
+import QuickreplyIcon from "@mui/icons-material/Quickreply";
 const  PersonAvatarInfo=({Username, joinindDate})=> {
   return (
+    <>
     <Box
       sx={{
         postion: "absolute",
@@ -18,9 +22,17 @@ const  PersonAvatarInfo=({Username, joinindDate})=> {
         
       }}
     >
-      <Typography variant="body2" >{Username}</Typography>
+      <Typography variant="body1" >
+        {Username}  
+         
+      
+         
+      </Typography>
       <Typography variant="caption"> {new Date(joinindDate).toDateString()} </Typography>
+      
     </Box>
+    
+    </>
   );
 }
 export default PersonAvatarInfo
