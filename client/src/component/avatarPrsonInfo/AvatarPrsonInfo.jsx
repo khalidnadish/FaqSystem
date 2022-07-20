@@ -1,8 +1,7 @@
+import { InfoSection } from "./InfoSection";
+
 import PlsHelpArea from "./PlsHelpArea";
 import TakeActionArea from "./TakeActionArea";
-
-// import  FirstActionDone  from "./FirstActionDone";
-// import  JoininDate  from "./JoininDate";
 import PersonFollowing from "./PersonFollowing";
 import PersonFollower from "./PersonFollower";
 import PersonAnswers from "./PersonAnswers";
@@ -10,21 +9,19 @@ import PersonQuastions from "./PersonQuastions";
 import PersonGroup from "./PersonGroup";
 import PersonAvatar from "./PersonAvatar";
 import PersonAvatarInfo from "./PersonAvatarInfo";
+import GenralInfo from "./GenralInfo";
 import CardMedia from "@mui/material/CardMedia";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
-import { GrUnlock } from "react-icons/gr";
-import { FaRegClock } from "react-icons/fa";
-import { BsCashCoin } from "react-icons/bs";
 
-import { Typography } from "@mui/material";
 function AvatarPrsonInfo({ userid }) {
   const { data, dataIsLoading } = useAxiosToGetData(
     `http://localhost:3001/person/${userid}`
   );
-
+ 
+  
   return (
     <>
       {dataIsLoading && (
@@ -46,26 +43,17 @@ function AvatarPrsonInfo({ userid }) {
         )}
       </Box>
 
-      <Box mt={1.5}>
-        <Typography component={"a"} color={"primary"} variant="h7" ml={1}>
-          <GrUnlock />active</Typography>
-        <Typography component={"a"} color={"primary"} variant="h7" ml={1}>
-           <FaRegClock /> replay rate
-        </Typography>
-        <Typography component={"a"} color={"primary"} variant="h7" ml={1}>
-
-          <BsCashCoin /> balace{" "}
-        </Typography>
-      </Box>
+      <GenralInfo />
       <Box sx={{ padding: "10px", width: "280px", margin: "auto", mt: 0 }}>
-        <Divider sx={{ marginBottom: "10px" }}>Info</Divider>
+        <Divider sx={{ marginBottom: "5px" }}>Info</Divider>
         <Grid container spacing={1}>
           <Grid item xs={4}>
             {dataIsLoading && (
               <PersonGroup
+                userid={data[0].userid}
+                username={data[0].username}
                 category={data[0].category}
                 avatarSrc={data[0].avatar}
-                username={data[0].username}
                 cr_date={data[0].create_time}
               />
             )}

@@ -4,8 +4,8 @@ import AntModal from '../modal/AntModal';
 import ShowGroupData from './ShowGroupData';
 import BadgeBtn from '../badgeBtn/BadgeBtn';
 
-const PersonGroup=({category,avatarSrc,username,cr_date })=> {
-  console.log(avatarSrc,username,cr_date )
+const PersonGroup=({category,avatarSrc,username,cr_date,userid })=> {
+ 
 
   const [showModal, setShowModal] = useState(false);
 
@@ -26,7 +26,7 @@ const PersonGroup=({category,avatarSrc,username,cr_date })=> {
         toolTip="Groups Joined"
       />
     {showModal && <AntModal setShowModal={setShowModal} showModal={showModal} >
-      <ShowGroupData avatarSrc={avatarSrc} username={username} cr_date={cr_date} />
+      <ShowGroupData avatarSrc={avatarSrc} username={username} cr_date={cr_date} userid={userid} />
       </AntModal>}
     </>
   );

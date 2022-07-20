@@ -1,5 +1,6 @@
  
 import Modal from "@mui/material/Modal";
+import { Box } from "@mui/system";
  
 
 const AntModal = ({ showModal, setShowModal, children }) => {
@@ -10,8 +11,17 @@ const AntModal = ({ showModal, setShowModal, children }) => {
         onClose={() => setShowModal(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        keepMounted 
+        
+     
       >
-        {children}
+
+
+{children}
+
+
+         
+       
       </Modal>
     </>
   );

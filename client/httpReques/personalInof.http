@@ -4,3 +4,5 @@
 #show user group nadish
 GET http://localhost:3001/person/getPersonCategory/1
 # database not connect
+
+GET http://localhost:3001/person/1

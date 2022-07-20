@@ -1,6 +1,7 @@
 import { Avatar, Box, Chip, Typography } from "@mui/material";
+import { borderColor } from "@mui/system";
 import React from "react";
-
+import ShowGroupDetail from "./ShowGroupDetail";
 const style = {
   position: "absolute",
   top: "50%",
@@ -9,25 +10,30 @@ const style = {
   width: 400,
   minHeight: "30vh",
   bgcolor: "background.paper",
-  border: "2px solid ",
+  border: "3px solid ",
   borderColor: "primary.light",
   boxShadow: 24,
   borderRadius: "8px",
+  borderColor: "warning.main",
 };
 
 const avatarStyle = {
-  position: "absolute",
-  top: "50%",
+  position: "relative",
+  // top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "100%",
+  width: "95%",
   bgcolor: "warning.main",
   boxShadow: 6,
-  height: "60px",
+  height: "50px",
   color: "background.paper",
+  borderRadius: 4,
+  borderColor: "warning.main",
 };
-const ShowGroupData = ({ avatarSrc, username, cr_date }) => {
+const ShowGroupData = ({ avatarSrc, userid, username, cr_date }) => {
+  
   return (
+    <>
     <Box sx={style}>
       <Box sx={{ position: "relative" }}>
         <Box sx={avatarStyle}>
@@ -36,7 +42,7 @@ const ShowGroupData = ({ avatarSrc, username, cr_date }) => {
               width: "80px",
               height: "80px",
               position: "absolute",
-              top: "-40px",
+              top: "-15px",
               left: "15px",
               border: "7px solid white",
             }}
@@ -48,15 +54,26 @@ const ShowGroupData = ({ avatarSrc, username, cr_date }) => {
               left: "110px",
             }}
           >
-            <Typography>{username}</Typography>
-            <Typography>{cr_date}</Typography>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                
+                alignItems: "center",
+                mt:1
+                
+              }}
+            >
+              <Typography variant="body1">{username}</Typography>
+              <Typography variant="body2">{new Date(cr_date).toDateString()}</Typography>
+            </Box>
           </Box>
-          <Box mt={10}>
-            <Chip label="sdsd1" color="primary" />
-          </Box>
+          
         </Box>
       </Box>
+        <ShowGroupDetail userid={userid} />
     </Box>
+        </>
   );
 };
 
