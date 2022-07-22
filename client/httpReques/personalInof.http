@@ -1,8 +1,10 @@
 # show user prefix
-# GET http://localhost:3001/person/1
- 
+GET  http://localhost:3001/person/1
 #show user group nadish
-GET http://localhost:3001/person/getPersonCategory/1
+GET http://localhost:3001/person/getPersonCategory/33
 # database not connect
+GET http://localhost:3001/person/33
+#
+GET http://localhost:3001/faq
 
-GET http://localhost:3001/person/1
+

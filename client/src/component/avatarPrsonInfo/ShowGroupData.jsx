@@ -11,7 +11,6 @@ const style = {
   minHeight: "30vh",
   bgcolor: "background.paper",
   border: "3px solid ",
-  borderColor: "primary.light",
   boxShadow: 24,
   borderRadius: "8px",
   borderColor: "warning.main",
@@ -31,13 +30,13 @@ const avatarStyle = {
   borderColor: "warning.main",
 };
 const ShowGroupData = ({ avatarSrc, userid, username, cr_date }) => {
-  
   return (
     <>
-    <Box sx={style}>
-      <Box sx={{ position: "relative" }}>
-        <Box sx={avatarStyle}>
-          <Avatar
+      {/* <Box sx={style}> */}
+        {/* <Box sx={{ position: "relative" }}> */}
+
+        {/* <Box sx={avatarStyle}> */}
+        {/* <Avatar
             sx={{
               width: "80px",
               height: "80px",
@@ -47,8 +46,8 @@ const ShowGroupData = ({ avatarSrc, userid, username, cr_date }) => {
               border: "7px solid white",
             }}
             src={avatarSrc}
-          />
-          <Box
+          /> */}
+        {/* <Box
             sx={{
               position: "absolute",
               left: "110px",
@@ -58,22 +57,20 @@ const ShowGroupData = ({ avatarSrc, userid, username, cr_date }) => {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                
-                alignItems: "center",
                 mt:1
-                
               }}
             >
-              <Typography variant="body1">{username}</Typography>
+             
               <Typography variant="body2">{new Date(cr_date).toDateString()}</Typography>
             </Box>
-          </Box>
-          
-        </Box>
-      </Box>
-        <ShowGroupDetail userid={userid} />
-    </Box>
-        </>
+          </Box> */}
+
+        {/* </Box> */}
+
+        {/* </Box> */}
+        <ShowGroupDetail userid={userid} username={username}/>
+      {/* </Box> */}
+    </>
   );
 };
 

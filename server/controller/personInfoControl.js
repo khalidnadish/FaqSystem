@@ -36,7 +36,7 @@ export function getPersonCategory(req, res) {
   const sqlSelect =  `SELECT  usergroup.userid, usergroup.groupid,
                       (SELECT  category.catName FROM category
                       WHERE usergroup.groupid = category.catid)   AS catname
-                      FROM usergroup  WHERE usergroup.userid = ?`;
+                      FROM usergroup  WHERE usergroup.userid = ? Group By catname`;
   
 
 

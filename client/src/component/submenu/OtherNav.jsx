@@ -1,13 +1,11 @@
 import React, { useContext, lazy, Suspense, useState } from "react";
 import Paper from "@mui/material/Paper";
 import { FaqDetail } from "../../helper/context/FAQContext";
-
-
-
-import "antd/dist/antd.css";
+import ViewListIcon from '@mui/icons-material/ViewList';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Grid from "@mui/material/Grid";
-
-import styled from "@emotion/styled";
 import Box from "@mui/material/Box";
 import { ShowGroupFilterTitle } from "./ShowGroupFilterTitle";
 import { ShowGroupFilterCounter } from "./ShowGroupFilterCounter";
@@ -20,9 +18,6 @@ import { QuastionYouLikeAction } from "./QuastionYouLikeAction";
 import { GroupYouTrackAction } from "./GroupYouTrackAction";
 import { AllGroup } from "./AllGroup";
 
-const GridForIcon = styled(Grid)({
-  borderColor: "rgba(0, 0, 0, 0.12)",
-});
 
 const Loader = lazy(() => import("../loader/Loader"));
 
@@ -38,20 +33,22 @@ function OtherNav({ userId }) {
   const [openGroups, setOpenGroups] = useState(false);
   const [dataToshow, setdataToshow] = useState("/category");
   const [typeOfShow, setTypeOfShow] = useState("all");
+  const [view, setView] = React.useState('list');
 
   const { setFaqUrl, faqInfo } = useContext(FaqDetail);
-
   const handleShowAllFAQ = () => {
     setFaqUrl(`/faq`);
   };
+  const handleChange = (event, nextView) => {
+    setView(nextView);
+  };
 
+  
   return (
     <>
       <Box
         sx={{
-          
           position: "relative",
-          
         }}
       >
         <Paper
@@ -81,13 +78,30 @@ function OtherNav({ userId }) {
                 alignItems="center"
                 columns={12}
               >
-                <Grid item xs={4} sm={4} md={4} align="center">
+                <Grid item xs={3} sm={3} md={3} align="center">
+                  <ToggleButtonGroup
+                    orientation="horizontal"
+                    value={view}
+                    exclusive
+                    onChange={handleChange}
+                  >
+                    <ToggleButton value="list" aria-label="list">
+                      <ViewListIcon />
+                    </ToggleButton>
+                    <ToggleButton value="module" aria-label="module">
+                      <ViewModuleIcon />
+                    </ToggleButton>
+                    
+                  </ToggleButtonGroup>
+                </Grid>
+                
+                <Grid item xs={3} sm={3} md={3} align="center">
                   <ShowGroupFilterTitle titleName={faqInfo.titleName} />
                 </Grid>
-                <Grid item xs={4} sm={4} md={4} align="center">
+                <Grid item xs={3} sm={3} md={3} align="center">
                   <ShowGroupFilterCounter conter={faqInfo.recordsCount} />
                 </Grid>
-                <Grid item xs={4} sm={4}  md={4} align="center">
+                <Grid item xs={3} sm={3} md={3} align="center">
                   <ShowAllButton handleShowAllFAQ={handleShowAllFAQ} />
                 </Grid>
               </Grid>
@@ -101,7 +115,6 @@ function OtherNav({ userId }) {
                 alignItems="center"
                 columns={14}
               >
-                 
                 <Grid item xs={2} md={2}>
                   <FavoriteAction userId={userId} />
                 </Grid>
@@ -115,37 +128,37 @@ function OtherNav({ userId }) {
                   />
                 </Grid>
 
-                <GridForIcon item xs={2} md={2} align="center">
+                <Grid item xs={2} md={2} align="center">
                   <PepoleYouTrackAction
                     setOpenUsers={setOpenUsers}
                     setdataToshow={setdataToshow}
                     setTypeOfShow={setTypeOfShow}
                     userId={userId}
                   />
-                </GridForIcon>
+                </Grid>
 
-                <GridForIcon item xs={2} md={2} align="center">
+                <Grid item xs={2} md={2} align="center">
                   <MostQuastionViewed />
-                </GridForIcon>
-                <GridForIcon item xs={2} md={2} align="center">
+                </Grid>
+                <Grid item xs={2} md={2} align="center">
                   <QuastionYouLikeAction />
-                </GridForIcon>
+                </Grid>
 
-                <GridForIcon item xs={2} md={2} align="center">
+                <Grid item xs={2} md={2} align="center">
                   <GroupYouTrackAction
                     setOpenGroups={setOpenGroups}
                     setdataToshow={setdataToshow}
                     setTypeOfShow={setTypeOfShow}
                     userId={userId}
                   />
-                </GridForIcon>
-                <GridForIcon item xs={2} md={2} align="center">
+                </Grid>
+                <Grid item xs={2} md={2} align="center">
                   <AllGroup
                     setOpenGroups={setOpenGroups}
                     setdataToshow={setdataToshow}
                     setTypeOfShow={setTypeOfShow}
                   />
-                </GridForIcon>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
@@ -182,5 +195,3 @@ function OtherNav({ userId }) {
 }
 
 export default OtherNav;
-
-

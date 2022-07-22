@@ -40,7 +40,7 @@ export default function FaqCrads({
   rowIndex,
 }) {
   const [showAnswer, setShowAnswer] = useState(false);
-
+  // const fallbackImage = "../../fallback/1.png"
   const handleReply = () => {
     setShowAnswer(true);
   };
@@ -92,6 +92,8 @@ const MainCardHeader = ({
   answerCount,
 }) => {
   const[avatarInfo,setAvatarInfo]=useState(false)
+  const [imageUrl, setImageUrl] = useState(src);
+  const fallbackImage = "http://localhost:3001/images/avatar/notExisit.jpg"
   const handleClick = () => {
     console.info("You clicked the Chip.");
   };
@@ -99,9 +101,16 @@ const MainCardHeader = ({
     setAvatarInfo(true)
   }
 
+  const errorHandler = () => {
+    
+    setImageUrl(fallbackImage);
+  }
+
+  
   return (
     <>
       {/* <CardHeader>
+
 
 
       </CardHeader> */}
@@ -120,10 +129,20 @@ const MainCardHeader = ({
               <Grid item xs={2} align="left">
                 <IconButton   onClick={()=>hadleAvatarClick()}> 
                 <Avatar
-                variant="rounded"
-                  src={src}
+                
+                  src={imageUrl}
                   aria-label="recipe"
                   alt={faqGroup}
+                  imgProps={{
+                    onError: errorHandler,
+                  }}
+                  
+
+
+
+
+
+
                   sx={{ width: "30px", height: "30px", marginLeft: "5px" }}
                 
                 />

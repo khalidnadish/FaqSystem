@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { GiShadowFollower } from "react-icons/gi";
+import { BsCoin } from "react-icons/bs";
+
 import { FaBell, FaLayerGroup } from "react-icons/fa";
 import { MdChatBubble } from "react-icons/md";
 import { VscHome } from "react-icons/vsc";
@@ -9,7 +11,8 @@ import Badge from "@mui/material/Badge";
 import Tooltip from "@mui/material/Tooltip";
 
 import MenuItem from "@mui/material/MenuItem";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
+import BadgeBtn from "../badgeBtn/BadgeBtn";
 
 export default function DesktopMenu() {
   const xcolor = "white";
@@ -24,19 +27,32 @@ export default function DesktopMenu() {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid item xs={2.4}>
+        <Grid item xs={2}>
+          <BadgeBtn
+            variant={"contained"}
+            startIcon={<BsCoin />}
+            count={"15051"}
+            xpad={"3px 10px 3px 10px"}
+            xcolor={"primary"}
+            xborderColor="primary.light"
+            // onClick={() => setShowModal(true)}
+
+            toolTip="Balance Click~ To Statment"
+          />
+        </Grid>
+        <Grid item xs={2}>
           <HomeRoute />
         </Grid>
-        <Grid item xs={2.4}>
+        <Grid item xs={2}>
           <PepoleYouFollow underWork={underWork} xcolor={xcolor} />
         </Grid>
-        <Grid item xs={2.4} align="center">
+        <Grid item xs={2} align="center">
           <Quastions underWork={underWork} xcolor={xcolor} />
         </Grid>
-        <Grid item xs={2.4}>
+        <Grid item xs={2}>
           <Groups underWork={underWork} xcolor={xcolor} />
         </Grid>
-        <Grid item xs={2.4}>
+        <Grid item xs={2}>
           <Notifacation underWork={underWork} xcolor={xcolor} />
         </Grid>
       </Grid>

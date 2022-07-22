@@ -24,6 +24,7 @@ const ShowFaqCard = ({ faqdata }) => {
         {faqdata.map((faqItem, index) => (
           <Suspense fallback={<Loader />} key={faqItem.faqid}>
             <Grid item xs={12} sm={12} md={4} lg={4}>
+            {/* TODO: check if avatar image Not exisit */}
               <FaqCrads
                 Quastion={faqItem.faq}
                 src={faqItem.avatar}
@@ -43,3 +44,10 @@ const ShowFaqCard = ({ faqdata }) => {
   );
 };
 export default ShowFaqCard;
+
+function checkImage(imageSrc, good, bad) {
+  var img = new Image();
+  img.onload = good; 
+  img.onerror = bad;
+  img.src = imageSrc;
+}

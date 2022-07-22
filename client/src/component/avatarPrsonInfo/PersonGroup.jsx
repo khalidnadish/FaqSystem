@@ -25,7 +25,7 @@ const PersonGroup=({category,avatarSrc,username,cr_date,userid })=> {
         
         toolTip="Groups Joined"
       />
-    {showModal && <AntModal setShowModal={setShowModal} showModal={showModal} >
+    {showModal && <AntModal setShowModal={setShowModal} showModal={showModal} username={username} cr_date={cr_date} userid={userid} avatarSrc={avatarSrc} >
       <ShowGroupData avatarSrc={avatarSrc} username={username} cr_date={cr_date} userid={userid} />
       </AntModal>}
     </>
