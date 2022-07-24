@@ -70,7 +70,16 @@ function AvatarPrsonInfo({ userid }) {
             )}
           </Grid>
           <Grid item xs={4}>
-            {dataIsLoading && <PersonAnswers answer={data[0].answer} />}
+            {dataIsLoading && (
+              <PersonAnswers
+                answer={data[0].answer}
+                userid={data[0].userid}
+                username={data[0].username}
+                category={data[0].category}
+                avatarSrc={data[0].avatar}
+                cr_date={data[0].create_time}
+              />
+            )}
           </Grid>
 
           <Grid item xs={12}>

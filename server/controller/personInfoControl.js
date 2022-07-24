@@ -76,13 +76,11 @@ WHERE
   });
 }
 
-
-
 export function getPersonAnsweredQuastion(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
   console.log("personal info:" + personIdidToGet);
 
-  const sqlstatment =   `SELECT   answers.ansid,answers.answer,answers.userid,answers.create_at,
+  const sqlstatment = `SELECT   answers.ansid,answers.answer,answers.userid,answers.create_at,
                         (SELECT   user.username  FROM  user
                           WHERE
                               user.userid = answers.userid) AS username,
@@ -92,7 +90,7 @@ export function getPersonAnsweredQuastion(req, res) {
                       FROM
                         answers
                       WHERE
-                          answers.faqid = ?`
+                          answers.faqid = ?`;
 
   dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
     if (err) {
@@ -103,22 +101,32 @@ export function getPersonAnsweredQuastion(req, res) {
   });
 }
 
+export function getPersonAnsweredDetail(req, res) {
+  const personIdidToGet = parseInt(req.params.userid);
+  console.log("personal info:" + personIdidToGet);
 
+  const sqlstatment = `SELECT  answers.userid, answers.answer, answers.create_at, answers.faqid,
+                      (SELECT  faq.faq  FROM  faq         WHERE  faq.faqid = answers.faqid) AS quastion,
+                      (SELECT  faq.userid FROM faq        WHERE  faq.faqid = answers.faqid) AS usercreator,
+                      (SELECT  user.username FROM  user   WHERE   user.userid = usercreator) AS usercreator_name,
+                      (SELECT  user.avatar   FROM  user   WHERE   user.userid = usercreator) AS usercreator_avatar
+                    FROM  answers WHERE userid = ?`;
 
-
-
-
-
-
-
-
-
+  dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(data);
+    res.status(200).send(data);
+  });
+}
 
 export default {
   getPersonCouners,
   getPersonCategory,
   getPersonQuastionDetail,
-  getPersonAnsweredQuastion
+  getPersonAnsweredQuastion,
+  getPersonAnsweredDetail,
   // quastionCount,
   // anwerCount,
   // followerCount,
