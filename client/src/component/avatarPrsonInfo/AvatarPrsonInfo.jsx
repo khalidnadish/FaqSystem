@@ -20,8 +20,7 @@ function AvatarPrsonInfo({ userid }) {
   const { data, dataIsLoading } = useAxiosToGetData(
     `http://localhost:3001/person/${userid}`
   );
- 
-  
+
   return (
     <>
       {dataIsLoading && (
@@ -59,7 +58,16 @@ function AvatarPrsonInfo({ userid }) {
             )}
           </Grid>
           <Grid item xs={4}>
-            {dataIsLoading && <PersonQuastions quastion={data[0].quastion} />}
+            {dataIsLoading && (
+              <PersonQuastions
+                userid={data[0].userid}
+                quastion={data[0].quastion}
+                username={data[0].username}
+                category={data[0].category}
+                avatarSrc={data[0].avatar}
+                cr_date={data[0].create_time}
+              />
+            )}
           </Grid>
           <Grid item xs={4}>
             {dataIsLoading && <PersonAnswers answer={data[0].answer} />}

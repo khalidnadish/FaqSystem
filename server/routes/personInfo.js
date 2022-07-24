@@ -2,7 +2,9 @@ import express from "express";
 
 import {
   getPersonCouners,
-  getPersonCategory
+  getPersonCategory,
+  getPersonQuastionDetail,
+  getPersonAnsweredQuastion
   
 
 } from "../controller/personInfoControl.js";
@@ -11,6 +13,8 @@ const router = express.Router();
 
  router.get("/:userid", getPersonCouners);
  router.get("/getPersonCategory/:userid", getPersonCategory);
+ router.get("/getPersonQuastionDetail/:userid", getPersonQuastionDetail);
+ router.get("/getPersonAnsweredQuastion/:userid", getPersonAnsweredQuastion);
 
   
 

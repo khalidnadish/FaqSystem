@@ -1,20 +1,15 @@
-import {useState} from 'react'
+import { useState } from "react";
 import { VscLayersActive } from "react-icons/vsc";
-import AntModal from '../modal/AntModal';
-import ShowGroupData from './ShowGroupData';
-import BadgeBtn from '../badgeBtn/BadgeBtn';
+import AntModal from "../modal/AntModal";
+import ShowGroupData from "./ShowGroupData";
+import BadgeBtn from "../badgeBtn/BadgeBtn";
 
-const PersonGroup=({category,avatarSrc,username,cr_date,userid })=> {
- 
-
+const PersonGroup = ({ category, avatarSrc, username, cr_date, userid }) => {
   const [showModal, setShowModal] = useState(false);
-
 
   return (
     <>
-
-
-<BadgeBtn
+      <BadgeBtn
         variant={"contained"}
         startIcon={<VscLayersActive />}
         count={category}
@@ -22,13 +17,29 @@ const PersonGroup=({category,avatarSrc,username,cr_date,userid })=> {
         xcolor={"success"}
         xborderColor="primary.light"
         onClick={() => setShowModal(true)}
-        
         toolTip="Groups Joined"
       />
-    {showModal && <AntModal setShowModal={setShowModal} showModal={showModal} username={username} cr_date={cr_date} userid={userid} avatarSrc={avatarSrc} >
-      <ShowGroupData avatarSrc={avatarSrc} username={username} cr_date={cr_date} userid={userid} />
-      </AntModal>}
+      {showModal && (
+        <AntModal
+          setShowModal={setShowModal}
+          showModal={showModal}
+          username={username}
+          cr_date={cr_date}
+          userid={userid}
+          avatarSrc={avatarSrc}
+          count={category}
+          title={`${username}  join ${category}  Groups `}
+          prefix1={"Group's"}
+        >
+          <ShowGroupData
+            avatarSrc={avatarSrc}
+            username={username}
+            cr_date={cr_date}
+            userid={userid}
+          />
+        </AntModal>
+      )}
     </>
   );
-}
-export default PersonGroup
+};
+export default PersonGroup;

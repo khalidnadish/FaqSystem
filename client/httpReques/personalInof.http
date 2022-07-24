@@ -1,10 +1,12 @@
-# show user prefix
-GET  http://localhost:3001/person/1
-#show user group nadish
+# show user prefix of data Summry
+GET  http://localhost:3001/person/33
+#show user group detal 
 GET http://localhost:3001/person/getPersonCategory/33
-# database not connect
-GET http://localhost:3001/person/33
-#
-GET http://localhost:3001/faq
+# show user Quastion And Answr on Each Quastion
+GET http://localhost:3001/person/getPersonQuastionDetail/33
+# reply on click for quastion
+GET http://localhost:3001/person/getPersonAnsweredQuastion/137
+
+
 
 
