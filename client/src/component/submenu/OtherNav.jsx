@@ -17,6 +17,7 @@ import { PeopleFollowYou } from "./PeopleFollowYou";
 import { QuastionYouLikeAction } from "./QuastionYouLikeAction";
 import { GroupYouTrackAction } from "./GroupYouTrackAction";
 import { AllGroup } from "./AllGroup";
+import { HistoryAction } from "./HistoryAction";
 
 
 const Loader = lazy(() => import("../loader/Loader"));
@@ -115,11 +116,14 @@ function OtherNav({ userId }) {
                 alignItems="center"
                 columns={14}
               >
-                <Grid item xs={2} md={2}>
+                <Grid item xs={1.5} md={1.5}>
                   <FavoriteAction userId={userId} />
                 </Grid>
+                <Grid item xs={1.5} md={1.5}>
+                  <HistoryAction userId={userId} />
+                </Grid>
 
-                <Grid item xs={2} md={2}>
+                <Grid item xs={1.5} md={1.5}>
                   <PeopleFollowYou
                     setOpenUsers={setOpenUsers}
                     setdataToshow={setdataToshow}
@@ -128,7 +132,7 @@ function OtherNav({ userId }) {
                   />
                 </Grid>
 
-                <Grid item xs={2} md={2} align="center">
+                <Grid item xs={1.5} md={1.5} align="center">
                   <PepoleYouTrackAction
                     setOpenUsers={setOpenUsers}
                     setdataToshow={setdataToshow}

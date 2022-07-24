@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import ReplayDailog from "../modal/ReplayDailog";
-
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
-import { AiOutlineEye } from "react-icons/ai";
-import ShowAnswerdQuastionDetail from "./ShowAnswerdQuastionDetail";
 import { Avatar, Box, Grid } from "@mui/material";
 
 function ShowQuastionDetail({ userid, avatarSrc, username, cr_date }) {
@@ -21,7 +16,7 @@ function ShowQuastionDetail({ userid, avatarSrc, username, cr_date }) {
 
   return data?.map((quastion) => {
     return (
-      <React.Fragment key={quastion.faqid}>
+      <React.Fragment key={quastion.faqid+quastion.ansid}>
         <ListItem
           sx={{
             padding: 0,
@@ -64,7 +59,7 @@ function ShowQuastionDetail({ userid, avatarSrc, username, cr_date }) {
                     fontSize={".7rem"}
                     align={"left"}
                   >
-                    {new Date(quastion.create_at).toDateString()}
+                    {new Date(quastion.quastion_date).toDateString()}
                   </Typography>
                 </Grid>
                 <Grid item xs={8} sm={8} md={8} align="left">
@@ -88,6 +83,15 @@ function ShowQuastionDetail({ userid, avatarSrc, username, cr_date }) {
                   p: 2,
                 }}
               >
+                <Typography
+                    color={"primary.dark"}
+                    variant="subtitle1"
+                    fontWeight={"normal"}
+                    fontSize={".7rem"}
+                    align={"left"}
+                  >
+                    {new Date(quastion.create_at).toDateString()}
+                  </Typography>
                 <Typography color={"background.paper"} align="left">{quastion.answer}</Typography>
               </Box>
             </ListItemText>

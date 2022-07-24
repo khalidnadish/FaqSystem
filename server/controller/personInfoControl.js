@@ -105,11 +105,13 @@ export function getPersonAnsweredDetail(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
   console.log("personal info:" + personIdidToGet);
 
-  const sqlstatment = `SELECT  answers.userid, answers.answer, answers.create_at, answers.faqid,
-                      (SELECT  faq.faq  FROM  faq         WHERE  faq.faqid = answers.faqid) AS quastion,
-                      (SELECT  faq.userid FROM faq        WHERE  faq.faqid = answers.faqid) AS usercreator,
+  const sqlstatment = `SELECT  answers.userid, answers.answer, answers.create_at, answers.faqid, answers.ansid,
+                      (SELECT  faq.faq  FROM      faq     WHERE  faq.faqid = answers.faqid) AS quastion,
+                      (SELECT  faq.userid FROM     faq    WHERE  faq.faqid = answers.faqid) AS usercreator,
                       (SELECT  user.username FROM  user   WHERE   user.userid = usercreator) AS usercreator_name,
-                      (SELECT  user.avatar   FROM  user   WHERE   user.userid = usercreator) AS usercreator_avatar
+                      (SELECT  user.avatar   FROM  user   WHERE   user.userid = usercreator) AS usercreator_avatar,
+                      (SELECT  faq.create_at FROM  faq    WHERE faq.faqid = answers.faqid) AS quastion_date
+
                     FROM  answers WHERE userid = ?`;
 
   dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
