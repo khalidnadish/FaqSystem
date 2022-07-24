@@ -1,19 +1,23 @@
+import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
+import ReplayDailog from "../modal/ReplayDailog";
 
-import React from "react";
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
 import { AiOutlineEye } from "react-icons/ai";
+import ShowAnswerdQuastionDetail from "./ShowAnswerdQuastionDetail";
 
-function ShowQuastionDetail({ userid }) {
+function ShowQuastionDetail({ userid, avatarSrc, username, cr_date }) {
   const { data, dataIsLoading } = useAxiosToGetData(
     `http://localhost:3001/person/getPersonQuastionDetail/${userid}`
   );
-  let value = true;
-  console.log(data?.lenght, userid);
+  const [showModal, setShowModal] = useState(false);
+  const [qid, setQid] = useState(false);
+  const [QtoShow, setQtoShow] = useState("");
+
   return data?.map((quastion) => {
     return (
       <React.Fragment key={quastion.faqid}>
@@ -22,19 +26,29 @@ function ShowQuastionDetail({ userid }) {
             quastion.ans_count === 0 ? null : (
               <IconButton
                 color="primary"
-                
-                onClick={
-                  ()=>{alert(quastion.faqid)}
-                
-                }
-
-                sx={{ marginLeft: "3px", bgcolor: "warning.light",color:"background.paper" }}
+                onClick={() => {
+                  setShowModal(true);
+                  // TODO: Qid state change many time will effect performance
+                  setQid(quastion.faqid)
+                  setQtoShow( quastion.faq)
+                }}
+                sx={{
+                  marginLeft: "3px",
+                  bgcolor: "warning.light",
+                  color: "background.paper",
+                }}
               >
                 <AiOutlineEye />
               </IconButton>
             )
           }
-          sx={{ padding: 0, fontSize: ".8rem", my: 1 }}
+          sx={{
+            padding: 0,
+            fontSize: ".8rem",
+            my: 1,
+            borderLeft: "3px solid",
+            borderColor: quastion.ans_count === 0 ? "red" : "green",
+          }}
         >
           <ListItemButton
             sx={{
@@ -54,10 +68,27 @@ function ShowQuastionDetail({ userid }) {
                 Publish on:{new Date(quastion.create_at).toDateString()} /
                 Replay's:{" "}
                 {quastion.ans_count === 0 ? (
-                   <span style={{ color: "red",fontSize:".8rem",fontWeight:"bold" }}> No Replay Yet</span>
-                 
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: ".8rem",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {" "}
+                    No Replay Yet
+                  </span>
                 ) : (
-                  <span style={{ color: "green",fontSize:".8rem",fontWeight:"bold",textDecoration:"underline"  }}>{quastion.ans_count}</span>
+                  <span
+                    style={{
+                      color: "green",
+                      fontSize: ".8rem",
+                      fontWeight: "bold",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    {quastion.ans_count}
+                  </span>
                 )}
               </Typography>
               <Typography
@@ -69,9 +100,33 @@ function ShowQuastionDetail({ userid }) {
               >
                 {quastion.faq}
               </Typography>
+
+              <Typography
+                // component={"a"}
+                color={"error.dark"}
+                variant="subtitle2"
+                fontWeight={"normal"}
+                align={"right"}
+                ml={2}
+              >
+                Add Reply
+              </Typography>
             </ListItemText>
           </ListItemButton>
         </ListItem>
+        {showModal && (
+          <ReplayDailog
+            setShowModal={setShowModal}
+            showModal={showModal}
+            username={username}
+            cr_date={cr_date}
+            avatarSrc={avatarSrc}
+            Quastion={QtoShow}
+           
+          >
+            <ShowAnswerdQuastionDetail Qid={qid} />
+          </ReplayDailog>
+        )}
       </React.Fragment>
     );
   });
