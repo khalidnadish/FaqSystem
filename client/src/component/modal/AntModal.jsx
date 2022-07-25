@@ -7,9 +7,13 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { FiMaximize2 } from "react-icons/fi";
+import { FiMinimize2 } from "react-icons/fi";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { Box } from "@mui/material";
 
-const AntModal = ({...props}) => {
-  const [flscreen,setFlscreen]= useState(false)
+const AntModal = ({ ...props }) => {
+  const [flscreen, setFlscreen] = useState(false);
   return (
     <>
       {/* TODO: import Draggable from 'react-draggable'; */}
@@ -17,7 +21,6 @@ const AntModal = ({...props}) => {
         open={props.showModal}
         onClose={() => props.setShowModal(false)}
         fullScreen={flscreen}
-        
         scroll={"paper"}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
@@ -32,57 +35,72 @@ const AntModal = ({...props}) => {
       >
         <DialogTitle
           sx={{
-            bgcolor: "primary.dark",
+            // bgcolor: "primary.dark",
             color: "background.paper",
             boxShadow: 24,
-            padding: 1,
+            padding: "5px",
           }}
         >
-          <Grid container alignItems="center">
-            <Grid item xs={3} sm={2} md={2}>
-              <Avatar
-                src={props.avatarSrc}
+          <Grid container alignItems={"center"}>
+            <Grid item xs={4.75} sm={4} md={3} align="center">
+              <Box
                 sx={{
-                  width: "55px",
-                  height: "55px",
-                  border: "3px solid white",
+                  border: "1px solid ",
+                  borderColor:"info.light",
+                  borderRadius:1,
+                  diplay: "flex",
+                  alignItems: "center",
+                  flexDirection: "row",
+                  justifyContent: "space-around",
+                  margin: "auto",
+
                 }}
-              />
+              >
+                <Avatar
+                  src={props.avatarSrc}
+                  sx={{
+                    width: "35px",
+                    height: "35px",
+                    border: "2px solid white",
+                    disply: "block",
+                    margin: "auto",
+                  }}
+                />
+                <Typography
+                  color={"primary"}
+                  variant="caption"
+                  display="block"
+                  margin="auto"
+                >
+                  {props.title}
+                </Typography>
+              </Box>
             </Grid>
-            <Grid item xs={8} sm={8} md={8} align="left">
-            <Typography align="left" variant="body1">{props.title}</Typography>
-             
+
+            <Grid item xs align="center">
+              <Typography
+                display="block"
+                align={"center"}
+                color={"lightgray"}
+                ml={2}
+              >
+                {props.count} {props.prefix1}
+              </Typography>
             </Grid>
-            <Grid item xs={2}>
-             
+            <Grid item xs={2} md={1} align={"left"}>
+              <Button onClick={() => setFlscreen(!flscreen)}>
+                {flscreen ? <FiMinimize2 /> : <FiMaximize2 />}
+              </Button>
             </Grid>
+            <Grid item xs={1} md={1} align={"left"}>
+              <Button onClick={() => props.setShowModal(false)}>
+                <AiOutlineCloseCircle size={"1.5rem"} />
+              </Button>
+            </Grid>
+            
           </Grid>
         </DialogTitle>
         <DialogContent>{props.children}</DialogContent>
-        <DialogActions
-          disableSpacing={true}
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            bgcolor: "primary.light",
-            padding: 0.5,
-          }}
-        >
-         <Typography color={"lightgray"} ml={2}>{props.count} {props.prefix1} </Typography>
-         
-          <Button
-            sx={{ color: "background.paper" }}
-            onClick={() => props.setShowModal(false)}
-          >
-            Close
-          </Button>
-          <Button
-            sx={{ color: "background.paper" }}
-            onClick={() => setFlscreen(!flscreen)}
-          >
-            {flscreen ? "min":"max"}
-          </Button>
-        </DialogActions>
       </Dialog>
     </>
   );
