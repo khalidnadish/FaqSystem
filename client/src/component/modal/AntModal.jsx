@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -7,24 +8,16 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-const AntModal = ({
-  showModal,
-  setShowModal,
-  children,
-  avatarSrc,
-  username,
-  cr_date,
-  count,
-  title,
-  prefix1
-}) => {
+const AntModal = ({...props}) => {
+  const [flscreen,setFlscreen]= useState(false)
   return (
     <>
       {/* TODO: import Draggable from 'react-draggable'; */}
       <Dialog
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        // fullScreen
+        open={props.showModal}
+        onClose={() => props.setShowModal(false)}
+        fullScreen={flscreen}
+        
         scroll={"paper"}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
@@ -48,7 +41,7 @@ const AntModal = ({
           <Grid container alignItems="center">
             <Grid item xs={3} sm={2} md={2}>
               <Avatar
-                src={avatarSrc}
+                src={props.avatarSrc}
                 sx={{
                   width: "55px",
                   height: "55px",
@@ -57,7 +50,7 @@ const AntModal = ({
               />
             </Grid>
             <Grid item xs={8} sm={8} md={8} align="left">
-            <Typography align="left" variant="body1">{title}</Typography>
+            <Typography align="left" variant="body1">{props.title}</Typography>
              
             </Grid>
             <Grid item xs={2}>
@@ -65,7 +58,7 @@ const AntModal = ({
             </Grid>
           </Grid>
         </DialogTitle>
-        <DialogContent>{children}</DialogContent>
+        <DialogContent>{props.children}</DialogContent>
         <DialogActions
           disableSpacing={true}
           sx={{
@@ -75,13 +68,19 @@ const AntModal = ({
             padding: 0.5,
           }}
         >
-         <Typography color={"lightgray"} ml={2}>{count} {prefix1} </Typography>
+         <Typography color={"lightgray"} ml={2}>{props.count} {props.prefix1} </Typography>
          
           <Button
             sx={{ color: "background.paper" }}
-            onClick={() => setShowModal(false)}
+            onClick={() => props.setShowModal(false)}
           >
             Close
+          </Button>
+          <Button
+            sx={{ color: "background.paper" }}
+            onClick={() => setFlscreen(!flscreen)}
+          >
+            {flscreen ? "min":"max"}
           </Button>
         </DialogActions>
       </Dialog>

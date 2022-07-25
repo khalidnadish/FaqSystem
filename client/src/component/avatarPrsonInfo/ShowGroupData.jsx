@@ -1,4 +1,4 @@
-import ShowGroupDetail from "./ShowQuastionDetail";
+import ShowGroupDetail from "./ShowGroupDetail";
 
 const ShowGroupData = ({ avatarSrc, userid, username, cr_date }) => {
   return (
