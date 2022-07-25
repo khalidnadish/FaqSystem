@@ -2,7 +2,8 @@ import { useState } from "react";
 import QuickreplyIcon from "@mui/icons-material/Quickreply";
 import BadgeBtn from "../badgeBtn/BadgeBtn";
 import ShowAnsweredDetail from "./ShowAnsweredDetail";
-import AnswerDailog from "../modal/AnswerDailog";
+// import AnswerDailog from "../modal/AnswerDailog";
+import AntModal from "../modal/AntModal";
 const PersonAnswers = ({ answer ,userid, avatarSrc, username, cr_date }) => {
   const [showModal, setShowModal] = useState(false);
   return (
@@ -19,13 +20,14 @@ const PersonAnswers = ({ answer ,userid, avatarSrc, username, cr_date }) => {
 
     />
     {showModal && (
-      <AnswerDailog
+      <AntModal
         setShowModal={setShowModal}
         showModal={showModal}
         username={username}
         cr_date={cr_date}
         userid={userid}
         avatarSrc={avatarSrc}
+        xcolor={"error.main"}
         // count={category}
         // title={`${username}  join ${category}  Groups `}
         // prefix1={"Group's"}
@@ -36,7 +38,7 @@ const PersonAnswers = ({ answer ,userid, avatarSrc, username, cr_date }) => {
           cr_date={cr_date}
           userid={userid}
         />
-      </AnswerDailog>
+      </AntModal>
     )}
 
 </>

@@ -4,7 +4,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import ReplayDailog from "../modal/ReplayDailog";
+import AntModal from "../modal/AntModal";
 
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
 import { AiOutlineEye } from "react-icons/ai";
@@ -115,17 +115,18 @@ function ShowQuastionDetail({ userid, avatarSrc, username, cr_date }) {
           </ListItemButton>
         </ListItem>
         {showModal && (
-          <ReplayDailog
+          <AntModal
             setShowModal={setShowModal}
             showModal={showModal}
             username={username}
             cr_date={cr_date}
             avatarSrc={avatarSrc}
             Quastion={QtoShow}
+            xcolor="yellow"
            
           >
             <ShowAnswerdQuastionDetail Qid={qid} />
-          </ReplayDailog>
+          </AntModal>
         )}
       </React.Fragment>
     );

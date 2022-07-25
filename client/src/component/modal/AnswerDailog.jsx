@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -6,10 +7,11 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-
+import { FiMaximize2 } from "react-icons/fi";
+import { FiMinimize2 } from "react-icons/fi";
 import { IoMdCloseCircle } from "react-icons/io";
  
-import { GoCommentDiscussion } from "react-icons/go";
+ 
 
 const AnswerDailog = ({
   showModal,
@@ -23,14 +25,14 @@ const AnswerDailog = ({
   prefix1,
   Quastion,
 }) => {
- 
+  const [flscreen, setFlscreen] = useState(false);
   return (
     <>
       {/* TODO: import Draggable from 'react-draggable'; */}
       <Dialog
         open={showModal}
         onClose={() => setShowModal(false)}
-        // fullScreen
+        fullScreen={flscreen}
         scroll={"paper"}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
@@ -84,6 +86,9 @@ const AnswerDailog = ({
             sx={{ color: "primary" }}
             onClick={() => setShowModal(false)}
           />
+           <Button onClick={() => setFlscreen(!flscreen)}>
+                {flscreen ? <FiMinimize2 /> : <FiMaximize2 />}
+              </Button>
          
             </Grid>
           </Grid>

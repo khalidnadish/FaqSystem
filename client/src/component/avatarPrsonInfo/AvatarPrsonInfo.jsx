@@ -86,12 +86,26 @@ function AvatarPrsonInfo({ userid }) {
             <Grid container direction={"row"} columns={8}>
               <Grid item xs={4} width={"100%"}>
                 {dataIsLoading && (
-                  <PersonFollower follower={data[0].follower} />
+                  <PersonFollower
+                    follower={data[0].follower}
+                    userid={data[0].userid}
+                    username={data[0].username}
+                    category={data[0].category}
+                    avatarSrc={data[0].avatar}
+                    cr_date={data[0].create_time}
+                  />
                 )}
               </Grid>
               <Grid item xs={4}>
                 {dataIsLoading && (
-                  <PersonFollowing following={data[0].following1} />
+                  <PersonFollowing
+                    following={data[0].following1}
+                    userid={data[0].userid}
+                    username={data[0].username}
+                    category={data[0].category}
+                    avatarSrc={data[0].avatar}
+                    cr_date={data[0].create_time}
+                  />
                 )}
               </Grid>
             </Grid>

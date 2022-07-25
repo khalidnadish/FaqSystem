@@ -123,12 +123,67 @@ export function getPersonAnsweredDetail(req, res) {
   });
 }
 
+
+
+export function getPersonFollowerDetail(req, res) {
+  const personIdidToGet = parseInt(req.params.userid);
+  console.log("personal info:" + personIdidToGet);
+
+  const sqlstatment = `SELECT  myflower.userid,myflower.followuser,myflower.create_at,myflower.id,myflower.create_at,
+                      (SELECT  user.username  FROM  user   WHERE  myflower.userid = user.userid) mainusername,
+                      (SELECT  user.username  FROM  user   WHERE  myflower.followuser = user.userid) followusername,
+                      (SELECT  user.avatar    FROM  user   WHERE  myflower.followuser = user.userid) followavatar
+                      FROM myflower where userid=?`
+  
+  dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(data);
+    res.status(200).send(data);
+  });
+}
+
+
+
+export function getPersonFollowingDetail(req, res) {
+  const personIdidToGet = parseInt(req.params.userid);
+  console.log("personal info:" + personIdidToGet);
+
+  const sqlstatment = `SELECT  myflower.userid,myflower.followuser,myflower.create_at,myflower.id,myflower.create_at,
+                      (SELECT  user.username  FROM  user   WHERE  myflower.userid = user.userid) mainusername,
+                      (SELECT  user.username  FROM  user   WHERE  myflower.followuser = user.userid) followusername,
+                      (SELECT  user.avatar    FROM  user   WHERE  myflower.followuser = user.userid) followavatar
+                      FROM myflower where followuser=?`
+  
+  dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(data);
+    res.status(200).send(data);
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
 export default {
   getPersonCouners,
   getPersonCategory,
   getPersonQuastionDetail,
   getPersonAnsweredQuastion,
   getPersonAnsweredDetail,
+  getPersonFollowerDetail,
+  getPersonFollowingDetail
   // quastionCount,
   // anwerCount,
   // followerCount,

@@ -30,6 +30,7 @@ const PersonGroup = ({ category, avatarSrc, username, cr_date, userid }) => {
           count={category}
           title={`${username}  join ${category}  Groups `}
           prefix1={"Group's"}
+          xcolor={"success.dark"}
         >
           <ShowGroupData
             avatarSrc={avatarSrc}

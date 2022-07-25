@@ -31,6 +31,7 @@ const PersonQuastions = ({ quastion,avatarSrc, username, cr_date, userid  }) => 
           count={quastion}
           title={`${username}  Have ${quastion}  Quastion `}
           prefix1={"Quastion's"}
+          xcolor={"warning.main"}
         >
           <ShowQuastionDetail
             avatarSrc={avatarSrc}

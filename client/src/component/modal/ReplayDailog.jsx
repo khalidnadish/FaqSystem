@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
+import { FiMaximize2 } from "react-icons/fi";
+import { FiMinimize2 } from "react-icons/fi";
  
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -23,13 +26,14 @@ const ReplayDailog = ({
   prefix1,
   Quastion,
 }) => {
+  const [flscreen, setFlscreen] = useState(true);
   return (
     <>
       {/* TODO: import Draggable from 'react-draggable'; */}
       <Dialog
         open={showModal}
         onClose={() => setShowModal(false)}
-        fullScreen
+        fullScreen={flscreen}
         scroll={"paper"}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
@@ -100,6 +104,9 @@ const ReplayDailog = ({
             sx={{ color: "background.paper" }}
             onClick={() => setShowModal(false)}
           />
+           <Button onClick={() => setFlscreen(!flscreen)}>
+                {flscreen ? <FiMinimize2 /> : <FiMaximize2 />}
+              </Button>
          
             </Grid>
           </Grid>

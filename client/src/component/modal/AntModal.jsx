@@ -2,7 +2,7 @@ import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
+ 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -39,6 +39,8 @@ const AntModal = ({ ...props }) => {
             color: "background.paper",
             boxShadow: 24,
             padding: "5px",
+            borderTop:"7px solid",
+            borderColor:props.xcolor
           }}
         >
           <Grid container alignItems={"center"}>
@@ -46,7 +48,7 @@ const AntModal = ({ ...props }) => {
               <Box
                 sx={{
                   border: "1px solid ",
-                  borderColor:"info.light",
+                  borderColor:"grey.300",
                   borderRadius:1,
                   diplay: "flex",
                   alignItems: "center",
