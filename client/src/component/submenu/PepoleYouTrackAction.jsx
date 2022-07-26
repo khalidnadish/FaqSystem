@@ -13,7 +13,17 @@ export function PepoleYouTrackAction({
         startIcon={<FaUsers />}
         count={cont}
         xpad={"3px 10px 3px 10px"}
-        xcolor={"warning"}
+        // xcolor={"warning"}
+        xcolor={"common"}
+        iconcolor={"primary.main"}
+        xborder={0}
+        xdisableElevation={true}
+        TypographyVariant="button"
+        TypographyColor="primary.main"
+
+
+
+
         onClick={() => {
           setOpenUsers(true);
           setdataToshow(`/user/showflower/${userId}`);

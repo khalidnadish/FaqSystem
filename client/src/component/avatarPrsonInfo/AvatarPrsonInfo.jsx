@@ -45,8 +45,8 @@ function AvatarPrsonInfo({ userid }) {
       <GenralInfo />
       <Box sx={{ padding: "10px", width: "280px", margin: "auto", mt: 0 }}>
         <Divider sx={{ marginBottom: "5px" }}>Info</Divider>
-        <Grid container spacing={1}>
-          <Grid item xs={4}>
+        <Grid container spacing={1} columns={15}>
+          <Grid item xs={3}>
             {dataIsLoading && (
               <PersonGroup
                 userid={data[0].userid}
@@ -57,7 +57,7 @@ function AvatarPrsonInfo({ userid }) {
               />
             )}
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             {dataIsLoading && (
               <PersonQuastions
                 userid={data[0].userid}
@@ -69,7 +69,7 @@ function AvatarPrsonInfo({ userid }) {
               />
             )}
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             {dataIsLoading && (
               <PersonAnswers
                 answer={data[0].answer}
@@ -82,9 +82,8 @@ function AvatarPrsonInfo({ userid }) {
             )}
           </Grid>
 
-          <Grid item xs={12}>
-            <Grid container direction={"row"} columns={8}>
-              <Grid item xs={4} width={"100%"}>
+
+          <Grid item xs={3} width={"100%"}>
                 {dataIsLoading && (
                   <PersonFollower
                     follower={data[0].follower}
@@ -96,7 +95,7 @@ function AvatarPrsonInfo({ userid }) {
                   />
                 )}
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 {dataIsLoading && (
                   <PersonFollowing
                     following={data[0].following1}
@@ -108,8 +107,10 @@ function AvatarPrsonInfo({ userid }) {
                   />
                 )}
               </Grid>
-            </Grid>
-          </Grid>
+
+
+
+
         </Grid>
 
         <TakeActionArea dataIsLoading={dataIsLoading} />

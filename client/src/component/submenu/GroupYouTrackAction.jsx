@@ -13,10 +13,20 @@ export function GroupYouTrackAction({
     <>
       <BadgeBtn
         variant={"contained"}
-        startIcon={<VscLayersActive />}
+        startIcon={<VscLayersActive  size={'1.3em'} />}
         count={cont}
-        xpad={"3px 10px 3px 10px"}
-        xcolor={"warning"}
+        xpad={"3px 5px 3px 5px"}
+        // xcolor={"warning"}
+        xcolor={"common"}
+        iconcolor={"primary.light"}
+        xborder={0}
+        xdisableElevation={true}
+        TypographyVariant="button"
+        TypographyColor="primary.main"
+
+
+
+
         onClick={() => {
           setdataToshow(`/category/getUserCategory/${userId}`);
 

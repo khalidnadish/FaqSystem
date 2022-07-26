@@ -21,8 +21,13 @@ export function AllGroup({ setOpenGroups, setdataToshow, setTypeOfShow }) {
           />
         }
         count={cont}
-        xpad={"3px 10px 3px 10px"}
-        xcolor={"warning"}
+        xpad={"3px 5px 3px 5px"}
+        xcolor={"common"}
+        iconcolor={"success.light"}
+        xborder={0}
+        xdisableElevation={true}
+        TypographyVariant="button"
+        TypographyColor="primary.main"
         onClick={() => {
           setdataToshow("/category");
           setOpenGroups(true);

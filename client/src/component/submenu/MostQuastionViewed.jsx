@@ -9,7 +9,18 @@ export function MostQuastionViewed({}) {
         startIcon={<FaMugHot />}
         count={"xx"}
         xpad={"3px 10px 3px 10px"}
-        xcolor={"warning"}
+        // xcolor={"warning"}
+        xcolor={"common"}
+        iconcolor={"grey.500"}
+        xborder={0}
+        xdisableElevation={true}
+        TypographyVariant="button"
+        TypographyColor="primary.main"
+
+
+
+
+
         // onClick={() => {
         //   setdataToshow(`/category/getUserCategory/${userId}`);
 

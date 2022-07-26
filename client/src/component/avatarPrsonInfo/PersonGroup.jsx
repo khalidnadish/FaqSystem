@@ -14,7 +14,13 @@ const PersonGroup = ({ category, avatarSrc, username, cr_date, userid }) => {
         startIcon={<VscLayersActive />}
         count={category}
         xpad={"3px 10px 3px 10px"}
-        xcolor={"success"}
+        // xcolor={"success"}
+        xcolor={"common"}
+        iconcolor={"success.dark"}
+        xborder={0}
+        xdisableElevation={true}
+        TypographyVariant="button"
+        TypographyColor="primary.main"
         xborderColor="primary.light"
         onClick={() => setShowModal(true)}
         toolTip="Groups Joined"

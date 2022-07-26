@@ -34,12 +34,19 @@ const fabStyle = {
   left: 16,
 };
 
+ 
+const homefabStyle = {
+  position: "fixed",
+  bottom: 90,
+  left: 16,
+};
+
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
-    right: -3,
-    top: 13,
-    border: `2px solid ${theme.palette.background.paper}`,
+    right: 5,
+    top: 7,
+    border: `1px solid ${theme.palette.background.paper}`,
   },
 }));
 
@@ -51,10 +58,7 @@ const Navbar = () => {
 
   const { userId, userName, setUserName, userAvatar } = useContext(UserDetail);
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-    setUserName("nadish");
-  };
+ 
 
   return (
     <>
@@ -68,12 +72,15 @@ const Navbar = () => {
           
         }}
       >
-        <Container fixed >
+        <Container  >
+          {userId !== 0 && <HomeFaqButton />}
           {userId !== 0 && <AddFaqButton />}
           <Toolbar
-            variant="dense"
+            variant="regular"
+            disableGutters
+            
             sx={{
-              marginBottom: "1.5rem",
+              marginBottom: "1.5rem",alignItems:"center"
             }}
           >
             <Grid  container    alignItems="center" >
@@ -117,8 +124,8 @@ const AddFaqButton = () => {
   return (
     <>
       <Fab
-        color="primary"
-        size={"large"}
+        color="error"
+        size={"small"}
         aria-label="add"
         onClick={() => handleaddQuastion()}
         sx={fabStyle}
@@ -132,6 +139,35 @@ const AddFaqButton = () => {
   );
 };
 
+
+const HomeFaqButton = () => {
+  const [open, setOpen] = useState(false);
+  const handleaddQuastion = () => {
+    setOpen(true);
+  };
+
+  return (
+    <>
+      <Fab
+        color="grey.300"
+        size={"small"}
+        aria-label="add"
+        onClick={() => handleaddQuastion()}
+        sx={homefabStyle}
+      >
+        {/* <AddIcon /> */}
+        <HomeRoute />
+      </Fab>
+      
+    </>
+  );
+};
+
+
+
+
+
+
 function SearchMenu({
  
   setOpenDrawer,
@@ -140,29 +176,27 @@ function SearchMenu({
   userId,
 }) {
   return (
-    <Grid container alignItems="center" spacing={1}>
-       <Grid item xs={.5}>
-        <HomeRoute />
-      </Grid>
+    <Grid container  alignItems="center" >
+       
       <Grid item xs={2}>
         <Balance />
       </Grid>
      
 
-      <Grid item xs={8}>
+      <Grid item xs={7} md={8}>
         <MySearch />
       </Grid>
 
-      <Grid item xs={.5}>
+      <Grid item xs={1}  >
         <Notifacation />
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={1.5} md={1}>
         <AvatarIcon
           setOpenDrawer={setOpenDrawer}
           userName={userName}
           userAvatar={userAvatar}
         />
-        {userId}
+        {/* {userId} */}
       </Grid>
       
       
@@ -190,8 +224,8 @@ function AvatarIcon({ setOpenDrawer, userName, userAvatar }) {
             md: 45,
             lg: 45,
           },
-          border: "3px solid",
-          borderColor:"grey.500"
+          border: "1px solid",
+          borderColor:"background.paper"
         }}
       />
     </IconButton>
@@ -237,7 +271,7 @@ function HomeRoute({}) {
   return (
     <Tooltip title="Home Page">
       <Link to={`/`}>
-        <VscHome size={25} color={"red"} />
+        <VscHome size={"2rem"} color={"red"} />
       </Link>
     </Tooltip>
   );
@@ -253,7 +287,7 @@ function Balance({}) {
       xpad={"3px 10px 3px 10px"}
       xcolor={"primary"}
       xborderColor="primary.light" // onClick={() => setShowModal(true)}
-      toolTip="Balance Click~ To Statment"
+      toolTip="Balance Click To show Statment"
     />
   );
 }

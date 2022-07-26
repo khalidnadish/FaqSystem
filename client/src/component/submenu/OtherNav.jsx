@@ -96,13 +96,13 @@ function OtherNav({ userId }) {
                   </ToggleButtonGroup>
                 </Grid>
                 
-                <Grid item xs={3} sm={3} md={3} align="center">
+                <Grid item xs={3} sm={3} md={2} align="center">
                   <ShowGroupFilterTitle titleName={faqInfo.titleName} />
                 </Grid>
-                <Grid item xs={3} sm={3} md={3} align="center">
+                <Grid item xs={3} sm={3} md={2} align="center">
                   <ShowGroupFilterCounter conter={faqInfo.recordsCount} />
                 </Grid>
-                <Grid item xs={3} sm={3} md={3} align="center">
+                <Grid item xs={3} sm={3} md={2} align="center">
                   <ShowAllButton handleShowAllFAQ={handleShowAllFAQ} />
                 </Grid>
               </Grid>
@@ -116,14 +116,14 @@ function OtherNav({ userId }) {
                 alignItems="center"
                 columns={14}
               >
-                <Grid item xs={1.5} md={1.5}>
+                <Grid item xs={1.5} md={1.25}>
                   <FavoriteAction userId={userId} />
                 </Grid>
-                <Grid item xs={1.5} md={1.5}>
+                <Grid item xs={1.5} md={1.25}>
                   <HistoryAction userId={userId} />
                 </Grid>
 
-                <Grid item xs={1.5} md={1.5}>
+                <Grid item xs={1.5} md={1.25}>
                   <PeopleFollowYou
                     setOpenUsers={setOpenUsers}
                     setdataToshow={setdataToshow}
@@ -132,7 +132,7 @@ function OtherNav({ userId }) {
                   />
                 </Grid>
 
-                <Grid item xs={1.5} md={1.5} align="center">
+                <Grid item xs={1.5} md={1.25} align="center">
                   <PepoleYouTrackAction
                     setOpenUsers={setOpenUsers}
                     setdataToshow={setdataToshow}
@@ -141,14 +141,14 @@ function OtherNav({ userId }) {
                   />
                 </Grid>
 
-                <Grid item xs={2} md={2} align="center">
+                <Grid item xs={2} md={1.25} align="center">
                   <MostQuastionViewed />
                 </Grid>
-                <Grid item xs={2} md={2} align="center">
+                <Grid item xs={2} md={1.25} align="center">
                   <QuastionYouLikeAction />
                 </Grid>
 
-                <Grid item xs={2} md={2} align="center">
+                <Grid item xs={2} md={1.25} align="center">
                   <GroupYouTrackAction
                     setOpenGroups={setOpenGroups}
                     setdataToshow={setdataToshow}
@@ -156,7 +156,7 @@ function OtherNav({ userId }) {
                     userId={userId}
                   />
                 </Grid>
-                <Grid item xs={2} md={2} align="center">
+                <Grid item xs={2} md={1.25} align="center">
                   <AllGroup
                     setOpenGroups={setOpenGroups}
                     setdataToshow={setdataToshow}

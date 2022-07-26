@@ -13,7 +13,15 @@ export function PeopleFollowYou({
         startIcon={<AiOutlineUserSwitch />}
         count={cont}
         xpad={"3px 10px 3px 10px"}
-        xcolor={"warning"}
+        // xcolor={"warning"}
+        xcolor={"common"}
+        iconcolor={"error.main"}
+        xborder={0}
+        xdisableElevation={true}
+        TypographyVariant="button"
+        TypographyColor="primary.main"
+
+
         onClick={() => {
           setOpenUsers(true);
 

@@ -1,12 +1,32 @@
 import { GoCommentDiscussion } from "react-icons/go";
-import Typography from "@mui/material/Typography";
-import BoxInfo from "../BoxInfo/BoxInfo";
+import BadgeBtn from "../badgeBtn/BadgeBtn";
 export function ShowGroupFilterCounter({ conter }) {
   return (
     <>
-      <BoxInfo backColor={"warning.light"} forColor={"background.paper"}>
-        <GoCommentDiscussion size={"2em"} /> <Typography>{conter}</Typography>
-      </BoxInfo>
+
+
+<BadgeBtn
+        variant={"contained"}
+        startIcon={<GoCommentDiscussion style={{margin:"0px"}}/>}
+        count={conter}
+        xpad={"3px 10px 3px 10px"}
+        xcolor={"common"}
+        iconcolor={"primary.dark"}
+        xborder={0}
+        xdisableElevation={true}
+        TypographyVariant="button"
+        TypographyColor="primary.main"
+        // onClick={() => {
+        //   setdataToshow("/category");
+        //   setOpenGroups(true);
+        //   setTypeOfShow("all");
+        // }}
+        toolTip="Group Selected "
+      />
+
+
+
+      
     </>
   );
 }

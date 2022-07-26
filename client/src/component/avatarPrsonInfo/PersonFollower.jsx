@@ -13,8 +13,15 @@ const PersonFollower = ({ follower,userid, avatarSrc, username, cr_date }) => {
         startIcon={<MdFollowTheSigns />}
         count={follower}
         xpad={"3px 10px 3px 10px"}
-        xcolor={"success"}
+        // xcolor={"success"}
         xborderColor="primary.light"
+        xcolor={"common"}
+        iconcolor={"primary.dark"}
+        xborder={0}
+        xdisableElevation={true}
+        TypographyVariant="button"
+        TypographyColor="primary.main"
+        
         onClick={() => setShowModal(true)}
         toolTip="Followers"
       />
