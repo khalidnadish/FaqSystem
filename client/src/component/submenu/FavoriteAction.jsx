@@ -8,7 +8,7 @@ export function FavoriteAction({ userId }) {
 
 <BadgeBtn
         variant={"contained"}
-        startIcon={<MdOutlineFavorite />}
+        startIcon={<MdOutlineFavorite style={{margin:"0px"}}/>}
         count={cont}
         xpad={"3px 10px 3px 10px"}
         xcolor={"warning"}

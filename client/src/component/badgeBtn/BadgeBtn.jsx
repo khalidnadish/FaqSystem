@@ -23,6 +23,9 @@ const BadgeBtn = ({
           startIcon={startIcon}
           color={xcolor}
           sx={{
+            display:"flex",
+            alignItems:"center",
+
             padding: xpad,
             width:"95%",
             minWidth: 0,
@@ -30,6 +33,13 @@ const BadgeBtn = ({
             flexDirection: { xs: "column", md: "row" },
             border: 1,
             borderColor: xborderColor,
+            "& .MuiButton-startIcon": {
+             margin:0
+            },
+
+
+
+ 
           }}
           onClick={onClick}
         >

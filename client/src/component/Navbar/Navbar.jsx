@@ -1,20 +1,24 @@
 import React, { useState, useContext, lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { UserDetail } from "../../helper/context/userContext";
 import AddIcon from "@mui/icons-material/Add";
-
+import Badge from "@mui/material/Badge";
+import { VscHome } from "react-icons/vsc";
+import { FaBell } from "react-icons/fa";
 import IconButton from "@mui/material/IconButton";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Toolbar from "@mui/material/Toolbar";
-
+import { styled } from "@mui/material/styles";
 import Fab from "@mui/material/Fab";
 import Container from "@mui/material/Container";
-
-import SearchIcon from "@mui/icons-material/Search";
-// import { t, useTranslation } from "react-i18next";
+import Tooltip from "@mui/material/Tooltip";
 import MySearch from "./Search";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import BadgeBtn from "../badgeBtn/BadgeBtn";
+import { BsCoin } from "react-icons/bs";
+
 
 const Loader = lazy(() => import("../loader/Loader"));
 const SettingDrawer = lazy(() => import("../settingDrawer/SettingDrawer"));
@@ -23,12 +27,21 @@ const FaqAddModel = lazy(() =>
   import("../../pages/home/faq/AddFaq/FaqAddModel")
 );
 const OtherNav = lazy(() => import("../../component/submenu/OtherNav"));
-const DesktopMenu = lazy(() => import("./DesktopMenu"));
+ 
 const fabStyle = {
   position: "fixed",
   bottom: 30,
   left: 16,
 };
+
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+  },
+}));
 
 const Navbar = () => {
   console.log("Navbar render");
@@ -46,13 +59,16 @@ const Navbar = () => {
   return (
     <>
       {userId === 0 && <Nouser />}
-      <AppBar
-        position="sticky"
+      <AppBar   position="sticky" 
+      
         sx={{
-          backgroundColor: "primary.main",
+          backgroundColor: "secondary.main",
+          borderRadius:"0px 0px 8px 8px",
+          padding:0
+          
         }}
       >
-        <Container fixed>
+        <Container fixed >
           {userId !== 0 && <AddFaqButton />}
           <Toolbar
             variant="dense"
@@ -60,21 +76,11 @@ const Navbar = () => {
               marginBottom: "1.5rem",
             }}
           >
-            <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Grid item xs={12} sm={12} md={6}>
-                <Suspense fallback={<Loader />}>
-                  {userId !== 0 && <DesktopMenu />}
-                </Suspense>
-              </Grid>
-              <Grid item xs={12} sm={12} md={6}>
+            <Grid  container    alignItems="center" >
+              
+              <Grid item xs={12} sm={12} md={12}>
                 {userId !== 0 && (
                   <SearchMenu
-                    handleOpenUserMenu={handleOpenUserMenu}
                     setOpenDrawer={setOpenDrawer}
                     userName={userName}
                     userAvatar={userAvatar}
@@ -98,6 +104,9 @@ const Navbar = () => {
   );
 };
 export default React.memo(Navbar);
+
+
+
 
 const AddFaqButton = () => {
   const [open, setOpen] = useState(false);
@@ -124,21 +133,30 @@ const AddFaqButton = () => {
 };
 
 function SearchMenu({
-  handleOpenUserMenu,
+ 
   setOpenDrawer,
   userName,
   userAvatar,
   userId,
 }) {
   return (
-    <Grid container spacing={1} justifyContent="center" alignItems="center">
-      <Grid item xs={8} align="center">
+    <Grid container alignItems="center" spacing={1}>
+       <Grid item xs={.5}>
+        <HomeRoute />
+      </Grid>
+      <Grid item xs={2}>
+        <Balance />
+      </Grid>
+     
+
+      <Grid item xs={8}>
         <MySearch />
       </Grid>
-      <Grid item xs={2} align="center">
-        <SearchButton handleOpenUserMenu={handleOpenUserMenu} />
+
+      <Grid item xs={.5}>
+        <Notifacation />
       </Grid>
-      <Grid item xs={2} align="center">
+      <Grid item xs={1}>
         <AvatarIcon
           setOpenDrawer={setOpenDrawer}
           userName={userName}
@@ -146,26 +164,12 @@ function SearchMenu({
         />
         {userId}
       </Grid>
+      
+      
     </Grid>
   );
 }
 
-function SearchButton({ handleOpenUserMenu }) {
-  return (
-    <IconButton
-      variant="outlined"
-      sx={{
-        color: "background.paper",
-        bgcolor: "primary.light",
-      }}
-      onClick={handleOpenUserMenu}
-      aria-label="search"
-      size="small"
-    >
-      <SearchIcon />
-    </IconButton>
-  );
-}
 
 function AvatarIcon({ setOpenDrawer, userName, userAvatar }) {
   return (
@@ -186,7 +190,8 @@ function AvatarIcon({ setOpenDrawer, userName, userAvatar }) {
             md: 45,
             lg: 45,
           },
-          border: "1.5px solid white",
+          border: "3px solid",
+          borderColor:"grey.500"
         }}
       />
     </IconButton>
@@ -214,3 +219,41 @@ const Nouser = () => {
     </>
   );
 };
+
+
+
+function Notifacation({ underWork }) {
+  return (
+     
+          <StyledBadge badgeContent={4} color="primary">
+            <FaBell size={30} color={"red"} />
+          </StyledBadge>
+ 
+  );
+}
+
+
+function HomeRoute({}) {
+  return (
+    <Tooltip title="Home Page">
+      <Link to={`/`}>
+        <VscHome size={25} color={"red"} />
+      </Link>
+    </Tooltip>
+  );
+
+  
+}
+function Balance({}) {
+  return (
+    <BadgeBtn
+      variant={"contained"}
+      startIcon={<BsCoin />}
+      count={"15051"}
+      xpad={"3px 10px 3px 10px"}
+      xcolor={"primary"}
+      xborderColor="primary.light" // onClick={() => setShowModal(true)}
+      toolTip="Balance Click~ To Statment"
+    />
+  );
+}

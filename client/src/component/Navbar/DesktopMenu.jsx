@@ -11,7 +11,7 @@ import Badge from "@mui/material/Badge";
 import Tooltip from "@mui/material/Tooltip";
 
 import MenuItem from "@mui/material/MenuItem";
-import { Grid, Typography } from "@mui/material";
+import Grid  from "@mui/material/Grid";
 import BadgeBtn from "../badgeBtn/BadgeBtn";
 
 export default function DesktopMenu() {
@@ -43,18 +43,7 @@ export default function DesktopMenu() {
         <Grid item xs={2}>
           <HomeRoute />
         </Grid>
-        <Grid item xs={2}>
-          <PepoleYouFollow underWork={underWork} xcolor={xcolor} />
-        </Grid>
-        <Grid item xs={2} align="center">
-          <Quastions underWork={underWork} xcolor={xcolor} />
-        </Grid>
-        <Grid item xs={2}>
-          <Groups underWork={underWork} xcolor={xcolor} />
-        </Grid>
-        <Grid item xs={2}>
-          <Notifacation underWork={underWork} xcolor={xcolor} />
-        </Grid>
+       
       </Grid>
     </>
   );
@@ -89,7 +78,7 @@ function PepoleYouFollow({ underWork, xcolor }) {
         }}
       >
         <Link to={`/`}>
-          <GiShadowFollower size={30} color={xcolor} />
+          <GiShadowFollower size={30} color={"red"} />
         </Link>
       </MenuItem>
     </Tooltip>
@@ -105,7 +94,7 @@ function Quastions({ underWork, xcolor }) {
         }}
       >
         <Link to={`/`}>
-          <MdChatBubble size={30} color={xcolor} />
+          <MdChatBubble size={30} color={"red"} />
         </Link>
       </MenuItem>
     </Tooltip>
@@ -121,7 +110,7 @@ function Groups({ underWork, xcolor }) {
         }}
       >
         <Link to={`/`}>
-          <FaLayerGroup size={30} color={xcolor} />
+          <FaLayerGroup size={30} color={"red"} />
         </Link>
       </MenuItem>
     </Tooltip>
@@ -138,7 +127,7 @@ function Notifacation({ underWork, xcolor }) {
       >
         <Link to={`/`}>
           <StyledBadge badgeContent={4} color="primary">
-            <FaBell size={30} color={xcolor} />
+            <FaBell size={30} color={"red"} />
           </StyledBadge>
         </Link>
       </MenuItem>
