@@ -33,7 +33,7 @@ const BadgeBtn = ({
             padding: xpad,
             width: "95%",
             minWidth: 0,
-            alignItems: "center",
+           
             flexDirection: { xs: "column", md: "column" },
             border: xborder,
             borderColor: xborderColor,

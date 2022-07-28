@@ -14,7 +14,7 @@ function ShowQuastionDetail({ Qid }) {
   const { data, dataIsLoading } = useAxiosToGetData(
     `http://localhost:3001/person/getPersonAnsweredQuastion/${Qid}`
   );
-  console.log("Qid  : " + Qid);
+  // console.log("Qid  : " + Qid);
   return data?.map((answer) => {
     return (
       <React.Fragment key={answer.ansid}>

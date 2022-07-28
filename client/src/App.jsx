@@ -5,9 +5,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 
 import { BrowserRouter } from "react-router-dom";
-import "./app.css"
+// import "./app.css"
 import { theme } from "./layout/theme";
-import { WelcomLoader } from "./component/loader/Loader";
+import  Loader  from "./component/loader/Loader";
 
 const MyRoutes = lazy(() => import("./layout/MyRoutes"));
 
@@ -18,7 +18,7 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           {/* <Paper> */}
-          <Suspense fallback={<WelcomLoader />}>
+          <Suspense fallback={<Loader xcolor="error" />}>
             <MyRoutes />
           </Suspense>
           {/* </Paper> */}

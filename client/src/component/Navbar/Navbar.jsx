@@ -2,20 +2,35 @@ import React, { useState, useContext, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { UserDetail } from "../../helper/context/userContext";
-import AddIcon from "@mui/icons-material/Add";
-import Badge from "@mui/material/Badge";
+import { BiCommentAdd } from "react-icons/bi";
 import { VscHome } from "react-icons/vsc";
 import { FaBell } from "react-icons/fa";
-import IconButton from "@mui/material/IconButton";
-import AppBar from "@mui/material/AppBar";
-import Avatar from "@mui/material/Avatar";
-import Toolbar from "@mui/material/Toolbar";
+
+
+
+
+import {Badge,IconButton ,AppBar ,Avatar ,Toolbar ,Fab , Container,Tooltip, Button, Grid } from "@mui/material";
+
+
+// import Badge from "@mui/material/Badge";
+// import IconButton from "@mui/material/IconButton";
+// import AppBar from "@mui/material/AppBar";
+// import Avatar from "@mui/material/Avatar";
+// import Toolbar from "@mui/material/Toolbar";
+// import Fab from "@mui/material/Fab";
+// import Container from "@mui/material/Container";
+// import Tooltip from "@mui/material/Tooltip";
+// import {  Button, Grid } from "@mui/material";
+
+
+
+
+
+
 import { styled } from "@mui/material/styles";
-import Fab from "@mui/material/Fab";
-import Container from "@mui/material/Container";
-import Tooltip from "@mui/material/Tooltip";
+
+
 import MySearch from "./Search";
-import { Box, Button, Grid, Typography } from "@mui/material";
 import BadgeBtn from "../badgeBtn/BadgeBtn";
 import { BsCoin } from "react-icons/bs";
 
@@ -51,7 +66,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const Navbar = () => {
-  console.log("Navbar render");
+  // console.log("Navbar render");
   const [openDrawer, setOpenDrawer] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState(null);
   // const [t, i18n] = useTranslation();
@@ -100,13 +115,15 @@ const Navbar = () => {
           {userId !== 0 && <OtherNav userId={userId} />}
         </Container>
       </AppBar>
-      <Suspense fallback={<Loader />}>
+      {openDrawer &&
+      <Suspense fallback={<Loader xcolor={"red"} />}>
         <SettingDrawer
           open={openDrawer}
           setOpen={setOpenDrawer}
           userName={userName}
         />
       </Suspense>
+}
     </>
   );
 };
@@ -130,7 +147,7 @@ const AddFaqButton = () => {
         onClick={() => handleaddQuastion()}
         sx={fabStyle}
       >
-        <AddIcon />
+        <BiCommentAdd size="1.5rem" />
       </Fab>
       <Suspense fallback={<Loader />}>
         <FaqAddModel open={open} setOpen={setOpen} />
@@ -155,7 +172,7 @@ const HomeFaqButton = () => {
         onClick={() => handleaddQuastion()}
         sx={homefabStyle}
       >
-        {/* <AddIcon /> */}
+      
         <HomeRoute />
       </Fab>
       

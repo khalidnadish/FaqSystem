@@ -1,5 +1,5 @@
 import React, { useState, lazy, Suspense } from "react";
-import Fab from "@mui/material/Fab";
+
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import Badge, { badgeClasses } from "@mui/material/Badge";
-import Stack from "@mui/material/Stack";
+
 import Chip from "@mui/material/Chip";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import QuickreplyIcon from "@mui/icons-material/Quickreply";
@@ -17,7 +17,8 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
+
+import Draggable from 'react-draggable';
 
 const LeftDrawer = lazy(() => import("@/component/leftDrawer/LeftDrawer"));
 
@@ -51,15 +52,16 @@ export default function FaqCrads({
     borderColor: "primary.light",
     marginBottom: "15px",
     borderRadius: "8px",
-    // display: "flex",
+ 
     justifyContent: "space-between",
     alignItems: "center",
     height: "calc(100% - 20px)",
-    // margin: "10px",
+  
   };
 
   return (
     <>
+    
       <Card sx={cardStyle}>
         <MainCardHeader
           src={src}
@@ -69,7 +71,7 @@ export default function FaqCrads({
           faqid={faqid}
           userid={userid}
         />
-        {/* <MainCardImage /> */}
+        
         <MainCardContent
           Quastion={Quastion}
           faqid={faqid}
@@ -78,6 +80,7 @@ export default function FaqCrads({
           answerCount={count}
         />
       </Card>
+     
     </>
   );
 }
@@ -109,11 +112,7 @@ const MainCardHeader = ({
   
   return (
     <>
-      {/* <CardHeader>
-
-
-
-      </CardHeader> */}
+      
       <CardHeader
         component="div"
         action={

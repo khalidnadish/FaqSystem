@@ -20,20 +20,20 @@ function IndexPage() {
   const { userId, userName, userAvatar, setUserId, setIslogin, islogin } =
     useContext(UserDetail);
   const { faqUrl, faqInfo } = useContext(FaqDetail);
-  console.log("islogin", islogin);
+  // console.log("islogin", islogin);
 
   useEffect(() => {}, [faqUrl]);
 
   return (
     <>
       <Container fixed>
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader xtext="Navbar"/>}>
           <Navbar />
         </Suspense>
         <Grid container direction={"column"} spacing={10}>
           <Grid item xs></Grid>
           <Grid item xs>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<Loader  xtext="Faq"/>}>
               <Faq
                 faqUrlLink={faqUrl}
                 lookup={faqInfo.titleName}

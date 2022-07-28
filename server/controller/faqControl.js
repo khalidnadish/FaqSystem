@@ -1,17 +1,17 @@
 import { dataBase } from "../controller/database.js";
 import { configData } from "../helpeer/config.js";
 
-export function  getAll(req, res) {
- 
+export function getAll(req, res) {
   // res.cookie("sky", "nadish", { httpOnly: true });
-  const sqlstatment = `SELECT f.faqid, f.faq, f.userid, f.catId, f.sututes, f.create_at, f.update_at, u.username as autherName, u.email, u.avatar, count(*) as  AnswerCount, c.catName
+  const sqlstatment = `SELECT f.faqid, f.faq, f.userid, f.catId, f.sututes, f.create_at, f.faqcolseoropen,
+   f.update_at, u.username as autherName, u.email, u.avatar, count(*) as  AnswerCount, c.catName
  FROM nadish_site.faq f
-   INNER JOIN user u ON ( f.userid = u.userid  )
-   INNER JOIN answers a ON ( u.userid = a.userid  )
-   INNER JOIN category c ON ( f.catId = c.catid  )
+   left JOIN user u ON ( f.userid = u.userid  )
+   left JOIN answers a ON ( u.userid = a.userid  )
+   left JOIN category c ON ( f.catId = c.catid  )
  GROUP BY
  f.faqid, f.faq, f.userid, f.catId, f.sututes, f.create_at, f.update_at, u.username, u.email,
-  u.avatar, c.catName limit 30`;
+  u.avatar, c.catName  `;
 
   const newsqlStatment = `Select f.faq, f.userid, f.sututes, f.create_at, f.update_at, a.faqid, count(*) As AnswerCount,
   u1.userid As userid, u1.username As autherName, u1.avatar, category.catName, category.catid,
@@ -126,21 +126,20 @@ FROM category c `;
 }
 
 export function getAllByGroup(req, res) {
-  console.log(req.cookies);
-  res.cookie("sky", "nadish", { httpOnly: true });
+  
 
   const filtercodeIs = parseInt(req.params.filterx);
   console.log("filter code >>>>>> :" + filtercodeIs);
 
-  const newsqlStatment = `Select f.faq, f.userid, f.sututes, f.create_at, f.update_at, a.faqid, count(*) As rowcount,
+  const newsqlStatment = `Select f.faq, f.userid, f.sututes, f.create_at, f.update_at,   count(*) As rowcount,
   u1.userid As userid, u1.username As autherName, u1.avatar, category.catName, category.catid,
   f.faqid As faqid1 From faq f
-  Inner Join answers a On f.faqid = a.faqid
+ 
   Inner Join user u1 On (f.userid = u1.userid )
   Inner Join category On (f.catId = category.catid )
   where f.catid=?
   Group By f.faq, f.userid, f.sututes, f.create_at,
-  f.update_at, a.faqid, u1.userid, u1.username, u1.avatar,
+  f.update_at,  u1.userid, u1.username, u1.avatar,
   category.catName, category.catid, f.faqid`;
 
   dataBase.execute(newsqlStatment, [filtercodeIs], (err, data) => {

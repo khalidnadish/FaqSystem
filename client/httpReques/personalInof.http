@@ -13,6 +13,14 @@ GET http://localhost:3001/person/getPersonFollowerDetail/33
 # person Following
 GET http://localhost:3001/person/getPersonFollowingDetail/33
 
+# person Following
+POST  http://localhost:3001/users/FollowUserAction/
+content-type: application/json
+
+{
+    "userid": "1",
+    "followuser": "5"
+}
 
 
  

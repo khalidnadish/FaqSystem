@@ -18,15 +18,17 @@ import { QuastionYouLikeAction } from "./QuastionYouLikeAction";
 import { GroupYouTrackAction } from "./GroupYouTrackAction";
 import { AllGroup } from "./AllGroup";
 import { HistoryAction } from "./HistoryAction";
+import AntModal from "../modal/AntModal";
+import { FaLayerGroup } from "react-icons/fa";
+import { VscLayersActive } from "react-icons/vsc";
+import { GroupCount } from "../../component/submenu/otherNavService";
+import { GroupCountYouFollow } from "../../component/submenu/otherNavService";
+
 
 
 const Loader = lazy(() => import("../loader/Loader"));
-
 const Category = lazy(() => import("../../pages/home/faq/Category/Category"));
-
-const PepoleYouFollow = lazy(() =>
-  import("../../pages/home/faq/FollowPepole/PepoleYouFollow")
-);
+const PepoleYouFollow = lazy(() => import("../../pages/home/faq/FollowPepole/PepoleYouFollow"));
 const LeftDrawer = lazy(() => import("../leftDrawer/LeftDrawer"));
 
 function OtherNav({ userId }) {
@@ -43,7 +45,8 @@ function OtherNav({ userId }) {
   const handleChange = (event, nextView) => {
     setView(nextView);
   };
-
+  const  groupCount=GroupCount()
+  const trackinGroup=GroupCountYouFollow(userId)
   
   return (
     <>
@@ -182,16 +185,23 @@ function OtherNav({ userId }) {
         </Suspense>
       )}
       {openGroups && (
+       
         <Suspense fallback={<Loader />}>
-          <LeftDrawer
-            open={openGroups}
-            setOpen={setOpenGroups}
-            drawerWidth={240}
-            anchor="left"
-            drHight={"103ed 0vh"}
+          <AntModal
+           setShowModal={setOpenGroups}
+           showModal={openGroups}
+           iconToShow={  typeOfShow === "all" ? <FaLayerGroup color="green" />: <VscLayersActive color="blue" /> }
+           count={typeOfShow === "all" ? groupCount:trackinGroup }
+           prefix1={"Group"    }
+          //  counter={GroupCount()}
+            // open={openGroups}
+            // setOpen={setOpenGroups}
+            // drawerWidth={240}
+            // anchor="left"
+            // drHight={"103ed 0vh"}
           >
             <Category whatToshow={dataToshow} typeOfShow={typeOfShow} />
-          </LeftDrawer>
+          </AntModal>
         </Suspense>
       )}
     </>

@@ -5,7 +5,7 @@ import { UserDetail } from "../context/userContext";
 const PrivateRoute = () => {
   const { userId, userName, userAvatar, islogin } = useContext(UserDetail);
 
-  console.log(userId, userName, userAvatar);
+  // console.log(userId, userName, userAvatar);
 
   return islogin ? <Outlet /> : <Navigate to="/login" />;
 };

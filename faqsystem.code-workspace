@@ -7,5 +7,21 @@
 			"path": "server"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "nadishSql",
+				"database": "nadish_sql",
+				"username": "root",
+				"password": "Leno_1972"
+			}
+		]
+	}
 }

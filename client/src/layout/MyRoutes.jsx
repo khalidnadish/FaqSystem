@@ -20,7 +20,7 @@ const MyRoutes = () => (
             <Route
               index
               element={
-                <Suspense fallback={<Loader />}>
+                <Suspense fallback={<Loader xtext="IndexPage"/>}>
                   <IndexPage />
                 </Suspense>
               }
@@ -29,7 +29,7 @@ const MyRoutes = () => (
             <Route
               path="/FaqId/:faqid"
               element={
-                <Suspense fallback={<Loader />}>
+                <Suspense fallback={<Loader xtext="FaqId"/>}>
                   <FaqId />
                 </Suspense>
               }
@@ -38,7 +38,7 @@ const MyRoutes = () => (
           <Route
             path="/login"
             element={
-              <Suspense fallback={<Loader />}>
+              <Suspense fallback={<Loader xtext="Login" />}>
                 <Login />
               </Suspense>
             }

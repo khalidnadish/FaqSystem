@@ -1,16 +1,16 @@
-@import 'antd/dist/antd.css';
+
 * {
-    font-family: 'Noto Kufi Arabic', sans-serif;
+    /* font-family: 'Noto Kufi Arabic', sans-serif;
     font-family: 'Nunito', sans-serif;
-    box-sizing: border-box;
+    box-sizing: border-box; */
 
 
     /* display: flex; */
 
 
-    font-size: calc(2px + 2vmin);
+    /* font-size: calc(2px + 2vmin); */
     /* color: white; */
-    text-align: center;
+    /* text-align: center; */
     
 /* border: solid #5B6DCD 1px; */
 

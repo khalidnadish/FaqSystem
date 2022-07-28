@@ -238,7 +238,7 @@ function SettingDrawer({ open, setOpen }) {
   );
 }
 
-export default SettingDrawer;
+export default React.memo(SettingDrawer);
 
 function SettingItems({
   toggleLang,
