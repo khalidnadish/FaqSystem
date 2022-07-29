@@ -14,6 +14,7 @@ GET http://localhost:3001/person/getPersonFollowerDetail/33
 GET http://localhost:3001/person/getPersonFollowingDetail/33
 
 # person Following
+
 POST  http://localhost:3001/users/FollowUserAction/
 content-type: application/json
 
@@ -22,6 +23,9 @@ content-type: application/json
     "followuser": "5"
 }
 
+# checkIs Follow
+GET http://localhost:3001/person/378/1'
+ 
 
  
 

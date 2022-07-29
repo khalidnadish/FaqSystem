@@ -3,14 +3,16 @@ import { configData } from "../helpeer/config.js";
 
 export function getPersonCouners(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
-  console.log("personal info:" + personIdidToGet);
+  const follow = parseInt(req.params.follow);
+  console.log("personal info:" + personIdidToGet,follow);
 
   const sqlSelect = `SELECT userid,username,avatar,create_time,
 (SELECT   COUNT(distinct(groupid)) FROM   usergroup  WHERE    userid = ?) AS category,
 (SELECT    COUNT(*)  FROM   faq        WHERE    userid = ?) AS quastion,
 (SELECT    COUNT(*)  FROM   answers    WHERE    userid = ?) AS answer,
 (SELECT    COUNT(*)  FROM   myflower   WHERE    userid = ?) AS follower,
-(SELECT    COUNT(*)  FROM   myflower   WHERE    followuser = ?) AS following1
+(SELECT    COUNT(*)  FROM   myflower   WHERE    followuser = ?) AS following1,
+(SELECT    COUNT(*)  FROM   myflower   WHERE    userid = ? and followuser=?) AS isYoufollowed
 FROM    user WHERE  userid = ? GROUP BY userid;`;
 
   dataBase.execute(
@@ -20,6 +22,8 @@ FROM    user WHERE  userid = ? GROUP BY userid;`;
       personIdidToGet,
       personIdidToGet,
       personIdidToGet,
+      personIdidToGet,
+      follow,
       personIdidToGet,
       personIdidToGet,
     ],
@@ -169,6 +173,27 @@ export function getPersonFollowingDetail(req, res) {
 
 
 
+export function checkIsFollowed(req, res) {
+  const userid = parseInt(req.params.userid);
+  const follow = parseInt(req.params.follow);
+
+
+  console.log(userid,follow);
+
+  const sqlstatment =  `SELECT count(userid) as checkfollow FROM nadish_site.myflower  where userid=? and followuser=?`
+  
+  
+  
+  dataBase.execute(sqlstatment, [userid,follow], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(data);
+    res.status(200).send(data);
+  });
+}
+
+
 
 
 
@@ -183,7 +208,8 @@ export default {
   getPersonAnsweredQuastion,
   getPersonAnsweredDetail,
   getPersonFollowerDetail,
-  getPersonFollowingDetail
+  getPersonFollowingDetail,
+  checkIsFollowed
   // quastionCount,
   // anwerCount,
   // followerCount,

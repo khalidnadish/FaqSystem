@@ -12,18 +12,18 @@ export function ShowAllButton({ handleShowAllFAQ }) {
 <BadgeBtn
         variant={"contained"}
         startIcon={<BsFillEyeFill style={{margin:"0px"}}/>}
-        count={"All"}
+        count={""}
         xpad={"3px 10px 3px 10px"}
         xcolor={"common"}
         iconcolor={"error.dark"}
         xborder={0}
         xdisableElevation={true}
-        TypographyVariant="button"
+        TypographyVariant="caption"
         TypographyColor="primary.main"
         onClick={() => {
           handleShowAllFAQ()
         }}
-        toolTip="Favorite Question"
+        toolTip="Show all"
       />
 
 

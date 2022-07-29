@@ -12,7 +12,7 @@ import { Box, Grid, Typography } from "@mui/material";
 function GenralInfo() {
   return (
     <Box
-      mt={1.7}
+      mt={3}
       sx={{
         display: "flex",
         justifyContent: "space-evenly",

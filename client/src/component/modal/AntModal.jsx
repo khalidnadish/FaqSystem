@@ -20,6 +20,7 @@ const Dtitle=
     color: "background.paper",
     boxShadow: 24,
     borderTop: "7px solid",
+    padding:.5
      // borderColor: props.xcolor,
   }
 
@@ -50,18 +51,16 @@ const AntModal = ({ ...props }) => {
       >
         <DialogTitle id="draggable-dialog-title" sx={Dtitle}>
           <Grid container alignItems={"center"}>
-            <Grid item xs={2} sm={2} md={2} align="center">
-              {/* {props.avatarSrc && ( */}
+            <Grid item xs={2} sm={2} md={3} align="center">
               <AvatarControl
                 ximg={props.avatarSrc}
                 xicon={props.iconToShow}
-                xTitle={props.title}
+                // xTitle={props.title}
               />
-              {/* )} */}
             </Grid>
 
-            <Grid item xs={8} md={8} align="center">
-              <MiddleText xcount={props.count} xprefix={props.prefix1} />
+            <Grid item xs={8} md={7} align="center">
+              <MiddleText   xTitle={props.title} />
             </Grid>
 
             <Grid item xs={2} md={2} align={"left"}>
@@ -100,7 +99,7 @@ const AntModal = ({ ...props }) => {
             </Grid>
           </Grid>
         </DialogTitle>
-        <DialogContent>{props.children}</DialogContent>
+        <DialogContent  mt={2} >{props.children}</DialogContent>
       </Dialog>
 
       {/* </Draggable> */}
@@ -153,7 +152,7 @@ export default AntModal;
       );
     }
 
-    function MiddleText({xcount, xprefix }) {
+    function MiddleText({xTitle }) {
       return (
         <Typography
           display="block"
@@ -161,7 +160,7 @@ export default AntModal;
           color={"warning.light"}
           ml={2}
         >
-          {xcount} {xprefix}
+          {xTitle}
         </Typography>
       );
     }

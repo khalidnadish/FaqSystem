@@ -1,17 +1,37 @@
 import BadgeBtn from "../badgeBtn/BadgeBtn";
 import { MdFollowTheSigns } from "react-icons/md";
-const PersonFollowAction = ({}) => {
+import { RiUserUnfollowLine } from "react-icons/ri";
+
+const PersonFollowAction = ({isYoufollowed}) => {
   return (
     <BadgeBtn
       variant={"contained"}
-      startIcon={<MdFollowTheSigns />}
-      // count={answer}
+      startIcon={isYoufollowed === 0 ? <MdFollowTheSigns /> : <RiUserUnfollowLine  />}
+      count={isYoufollowed === 0 ?"Follow" :"UnFollow"  }
       xpad={"3px 10px 3px 10px"}
-      xcolor={"primary"}
+      // xcolor={isYoufollowed === 0 ? "primary": "warning"}
+
+      xcolor={"common"}
+      iconcolor={ isYoufollowed === 0 ? "primary.dark" :"error.dark"  }
+      xborder={0}
+      xdisableElevation={true}
+      TypographyVariant="caption"
+      TypographyColor="primary.main"
+      TypographySize=".5rem"
+      
+      // onClick={() => {
+      //   setdataToshow("/category");
+      //   setOpenGroups(true);
+      //   setTypeOfShow("all");
+      // }}
+      toolTip={isYoufollowed === 0 ?"Follow User" :"UnFollow User"  }
+       
+
+
       
       xborderColor="primary.light"
       // onClick={() => setShowModal(true)}
-      toolTip="Answer's Create"
+      // toolTip="Answer's Create"
     />
   );
 };

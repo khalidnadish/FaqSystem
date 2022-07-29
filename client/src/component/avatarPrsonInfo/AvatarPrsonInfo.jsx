@@ -16,9 +16,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
 
-function AvatarPrsonInfo({ userid }) {
+function AvatarPrsonInfo({ userid,myUserId }) {
   const { data, dataIsLoading } = useAxiosToGetData(
-    `http://localhost:3001/person/${userid}`
+    `http://localhost:3001/person/${userid}/1`
   );
 
   return (
@@ -54,7 +54,7 @@ function AvatarPrsonInfo({ userid }) {
                 category={data[0].category}
                 avatarSrc={data[0].avatar}
                 cr_date={data[0].create_time}
-              />
+              /> 
             )}
           </Grid>
           <Grid item xs={3}>
@@ -107,14 +107,10 @@ function AvatarPrsonInfo({ userid }) {
                   />
                 )}
               </Grid>
-
-
-
-
         </Grid>
-
-        <TakeActionArea dataIsLoading={dataIsLoading} />
+        {dataIsLoading && <TakeActionArea dataIsLoading={dataIsLoading} isYoufollowed={data[0]?.isYoufollowed}/>}
         <PlsHelpArea dataIsLoading={dataIsLoading} />
+        
       </Box>
     </>
   );

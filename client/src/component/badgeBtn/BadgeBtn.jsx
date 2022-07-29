@@ -16,7 +16,8 @@ const BadgeBtn = ({
   xborder = 1,
   xdisableElevation = false,
   TypographyVariant = "body1",
-  TypographyColor="text.disabled"
+  TypographyColor="text.disabled",
+   TypographySize=".75rem"
 }) => {
   return (
     <>
@@ -29,11 +30,10 @@ const BadgeBtn = ({
           sx={{
             display: "flex",
             alignItems: "center",
-
             padding: xpad,
             width: "95%",
             minWidth: 0,
-           
+            minHeight: 0,
             flexDirection: { xs: "column", md: "column" },
             border: xborder,
             borderColor: xborderColor,
@@ -44,7 +44,7 @@ const BadgeBtn = ({
           }}
           onClick={onClick}
         >
-          <Typography variant={TypographyVariant} color={TypographyColor} sx={{ margin: "auto" }}>
+          <Typography variant={TypographyVariant} color={TypographyColor} fontSize={TypographySize} sx={{ margin: "auto" }}>
             {count}
           </Typography>
         </Button>

@@ -7,7 +7,9 @@ import {
   getPersonAnsweredQuastion,
   getPersonAnsweredDetail,
   getPersonFollowerDetail,
-  getPersonFollowingDetail
+  getPersonFollowingDetail,
+  checkIsFollowed
+
 
   
 
@@ -15,13 +17,15 @@ import {
 
 const router = express.Router();
 
- router.get("/:userid", getPersonCouners);
+ router.get("/:userid/:follow", getPersonCouners);
  router.get("/getPersonCategory/:userid", getPersonCategory);
  router.get("/getPersonQuastionDetail/:userid", getPersonQuastionDetail);
  router.get("/getPersonAnsweredQuastion/:userid", getPersonAnsweredQuastion);
  router.get("/getPersonAnsweredDetail/:userid", getPersonAnsweredDetail);
  router.get("/getPersonFollowerDetail/:userid", getPersonFollowerDetail);
  router.get("/getPersonFollowingDetail/:userid", getPersonFollowingDetail);
+
+ router.get('/checkIsFollowed/:userid/:follow',checkIsFollowed);
 
   
  
