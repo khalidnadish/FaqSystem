@@ -20,7 +20,7 @@ const TakeActionArea = ({
         padding: "5px",
       }}
     >
-      <Divider sx={{ marginBottom: "3px", marginTop: "3px" }}>
+      <Divider  >
         Take Action
       </Divider>
       <Grid container spacing={1}>

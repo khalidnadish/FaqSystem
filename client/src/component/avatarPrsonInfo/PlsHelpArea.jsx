@@ -12,7 +12,7 @@ const  PlsHelpArea=({ dataIsLoading })=> {
         padding: "5px",
       }}
     >
-      <Divider sx={{marginBottom:"12px",marginTop:"10px"}}>Support Me Pls..!</Divider>
+      <Divider  >Support Me Pls..!</Divider>
       <Grid container  >
         
 

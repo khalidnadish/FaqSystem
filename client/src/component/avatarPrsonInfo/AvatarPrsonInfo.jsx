@@ -1,4 +1,4 @@
-import React, { useState, useContext ,useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import PlsHelpArea from "./PlsHelpArea";
 import TakeActionArea from "./TakeActionArea";
 import PersonFollowing from "./PersonFollowing";
@@ -17,26 +17,16 @@ import { UserDetail } from "@/helper/context/userContext";
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
 
 function AvatarPrsonInfo({ targetUserid }) {
-  
   const { userId } = useContext(UserDetail);
   const { data, dataIsLoading } = useAxiosToGetData(
     `/person/${targetUserid}/${userId}`
   );
-  const [followingTarget, setFollowingTarget] = useState(0)
-
-
-useEffect(() => {
-   
+  const [followingTarget, setFollowingTarget] = useState(0);
+  useEffect(() => {
     if (dataIsLoading) {
- 
-       setFollowingTarget(data[0].following1)
+      setFollowingTarget(data[0].following1);
     }
-}, [dataIsLoading])
-
-
- 
- 
- 
+  }, [dataIsLoading]);
 
   return (
     <>
@@ -61,7 +51,7 @@ useEffect(() => {
 
       <GenralInfo />
       <Box sx={{ padding: "10px", width: "280px", margin: "auto", mt: 0 }}>
-        <Divider sx={{ marginBottom: "5px" }}>Info</Divider>
+        <Divider >Info</Divider>
         <Grid container spacing={1} columns={15}>
           <Grid item xs={3}>
             {dataIsLoading && (
@@ -132,8 +122,6 @@ useEffect(() => {
             targetUserid={data[0].userid}
             userId={userId}
             setFollowingTarget={setFollowingTarget}
-            
-
           />
         )}
         <PlsHelpArea dataIsLoading={dataIsLoading} />

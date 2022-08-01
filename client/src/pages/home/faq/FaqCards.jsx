@@ -18,16 +18,16 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
-import Draggable from 'react-draggable';
+import Draggable from "react-draggable";
 
 const LeftDrawer = lazy(() => import("@/component/leftDrawer/LeftDrawer"));
 
 const AnswerDrawer = lazy(() => import("./ShowFaqAnswer/AnswerDrawer"));
 const Loader = lazy(() => import("../../../component/loader/Loader"));
 const FaqAnswerId = lazy(() => import("./FaqAnswerId"));
-const AvatarPrsonInfo =lazy(()=>import ("@/component/avatarPrsonInfo/AvatarPrsonInfo"))
-
-
+const AvatarPrsonInfo = lazy(() =>
+  import("@/component/avatarPrsonInfo/AvatarPrsonInfo")
+);
 
 export default function FaqCrads({
   userid,
@@ -41,27 +41,24 @@ export default function FaqCrads({
   rowIndex,
 }) {
   const [showAnswer, setShowAnswer] = useState(false);
-  // const fallbackImage = "../../fallback/1.png"
   const handleReply = () => {
     setShowAnswer(true);
   };
- 
+
   const cardStyle = {
-    width: "100%",
+    width: "99%",
     border: `.5px solid`,
     borderColor: "primary.light",
     marginBottom: "15px",
-    borderRadius: "8px",
- 
+    borderRadius: "4px",
+
     justifyContent: "space-between",
     alignItems: "center",
     height: "calc(100% - 20px)",
-  
   };
 
   return (
     <>
-    
       <Card sx={cardStyle}>
         <MainCardHeader
           src={src}
@@ -71,7 +68,7 @@ export default function FaqCrads({
           faqid={faqid}
           userid={userid}
         />
-        
+
         <MainCardContent
           Quastion={Quastion}
           faqid={faqid}
@@ -80,7 +77,6 @@ export default function FaqCrads({
           answerCount={count}
         />
       </Card>
-     
     </>
   );
 }
@@ -94,30 +90,26 @@ const MainCardHeader = ({
   rowIndex,
   answerCount,
 }) => {
-  const[avatarInfo,setAvatarInfo]=useState(false)
+  const [avatarInfo, setAvatarInfo] = useState(false);
   const [imageUrl, setImageUrl] = useState(src);
-  const fallbackImage = "http://localhost:3001/images/avatar/notExisit.jpg"
+  const fallbackImage = "http://localhost:3001/images/avatar/notExisit.jpg";
   const handleClick = () => {
     console.info("You clicked the Chip.");
   };
-  const hadleAvatarClick=()=>{
-    setAvatarInfo(true)
-  }
+  const hadleAvatarClick = () => {
+    setAvatarInfo(true);
+  };
 
   const errorHandler = () => {
-    
     setImageUrl(fallbackImage);
-  }
+  };
 
-  
   return (
     <>
-      
       <CardHeader
         component="div"
         action={
           <>
-             
             <Grid
               container
               direction="row"
@@ -126,27 +118,18 @@ const MainCardHeader = ({
               spacing={0}
             >
               <Grid item xs={2} align="left">
-                <IconButton   onClick={()=>hadleAvatarClick()}> 
-                <Avatar
-                
-                  src={imageUrl}
-                  aria-label="recipe"
-                  alt={faqGroup}
-                  imgProps={{
-                    onError: errorHandler,
-                  }}
-                  
-
-
-
-
-
-
-                  sx={{ width: "30px", height: "30px", marginLeft: "5px" }}
-                
-                />
-                {userid}
+                <IconButton onClick={() => hadleAvatarClick()}>
+                  <Avatar
+                    src={imageUrl}
+                    aria-label="recipe"
+                    alt={faqGroup}
+                    imgProps={{
+                      onError: errorHandler,
+                    }}
+                    sx={{ width: "30px", height: "30px", marginLeft: "5px" }}
+                  />
                 </IconButton>
+                  {userid}
               </Grid>
 
               <Grid item xs={2} align="left">
@@ -171,22 +154,22 @@ const MainCardHeader = ({
               </Grid>
             </Grid>
             {avatarInfo && (
-        <Suspense fallback={<Loader />}>
-          <LeftDrawer
-            open={avatarInfo}
-            setOpen={setAvatarInfo}
-            drawerWidth={300}
-            anchor="left"
-            drHight={"100vh"}
-          >
-            <AvatarPrsonInfo targetUserid={userid}/>
-          </LeftDrawer>
-        </Suspense>
-      )}
+              <Suspense fallback={<Loader />}>
+                <LeftDrawer
+                  open={avatarInfo}
+                  setOpen={setAvatarInfo}
+                  drawerWidth={300}
+                  anchor="left"
+                  drHight={"100vh"}
+                >
+                  <AvatarPrsonInfo targetUserid={userid} />
+                </LeftDrawer>
+              </Suspense>
+            )}
           </>
         }
         sx={{
-          bgcolor: "primary.light",
+          bgcolor: "grey.300",
           padding: 0,
           display: "block",
           paddingTop: 1,
@@ -335,7 +318,7 @@ function AddAnswer({}) {
         size="small"
         color="primary"
       >
-        <RateReviewIcon fontSize="small" sx={{ color: "background.paper" }} />
+        <RateReviewIcon fontSize="large" sx={{ color: "error.main" }} />
       </IconButton>
     </Tooltip>
   );

@@ -13,6 +13,7 @@ function GenralInfo() {
   return (
     <Box
       mt={3}
+      ml={3}
       sx={{
         display: "flex",
         justifyContent: "space-evenly",
