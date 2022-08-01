@@ -1,10 +1,10 @@
-import React, { useContext, lazy, Suspense, useState } from "react";
+import React, { useContext, lazy, Suspense, useState,useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import { FaqDetail } from "../../helper/context/FAQContext";
-import ViewListIcon from '@mui/icons-material/ViewList';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ViewListIcon from "@mui/icons-material/ViewList";
+import ViewModuleIcon from "@mui/icons-material/ViewModule";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { ShowGroupFilterTitle } from "./ShowGroupFilterTitle";
@@ -23,12 +23,14 @@ import { FaLayerGroup } from "react-icons/fa";
 import { VscLayersActive } from "react-icons/vsc";
 import { GroupCount } from "../../component/submenu/otherNavService";
 import { GroupCountYouFollow } from "../../component/submenu/otherNavService";
-
-
+import { RiUserUnfollowLine } from "react-icons/ri"
+ 
 
 const Loader = lazy(() => import("../loader/Loader"));
 const Category = lazy(() => import("../../pages/home/faq/Category/Category"));
-const PepoleYouFollow = lazy(() => import("../../pages/home/faq/FollowPepole/PepoleYouFollow"));
+const PepoleYouFollow = lazy(() =>
+  import("../../pages/home/faq/FollowPepole/PepoleYouFollow")
+);
 const LeftDrawer = lazy(() => import("../leftDrawer/LeftDrawer"));
 
 function OtherNav({ userId }) {
@@ -36,18 +38,25 @@ function OtherNav({ userId }) {
   const [openGroups, setOpenGroups] = useState(false);
   const [dataToshow, setdataToshow] = useState("/category");
   const [typeOfShow, setTypeOfShow] = useState("all");
-  const [view, setView] = React.useState('list');
-
+  const [view, setView] = React.useState("list");
+  
   const { setFaqUrl, faqInfo } = useContext(FaqDetail);
+  
+ 
+  
+
+
   const handleShowAllFAQ = () => {
     setFaqUrl(`/faq`);
   };
   const handleChange = (event, nextView) => {
     setView(nextView);
   };
-  const  groupCount=GroupCount()
-  const trackinGroup=GroupCountYouFollow(userId)
-  
+  const groupCount = GroupCount();
+  const trackinGroup = GroupCountYouFollow(userId);
+
+
+
   return (
     <>
       <Box
@@ -95,14 +104,12 @@ function OtherNav({ userId }) {
                     <ToggleButton value="module" aria-label="module">
                       <ViewModuleIcon />
                     </ToggleButton>
-                    <ToggleButton value="module" aria-label="module">
-                    <ShowAllButton handleShowAllFAQ={handleShowAllFAQ} />
-                    </ToggleButton>
-                    
-                    
+                    {/* <ToggleButton value="module" aria-label="module"> */}
+                      <ShowAllButton handleShowAllFAQ={handleShowAllFAQ} />
+                    {/* </ToggleButton> */}
                   </ToggleButtonGroup>
                 </Grid>
-                
+
                 <Grid item xs={3} sm={3} md={2} align="center">
                   <ShowGroupFilterTitle titleName={faqInfo.titleName} />
                 </Grid>
@@ -189,20 +196,19 @@ function OtherNav({ userId }) {
         </Suspense>
       )}
       {openGroups && (
-       
         <Suspense fallback={<Loader />}>
           <AntModal
-           setShowModal={setOpenGroups}
-           showModal={openGroups}
-           iconToShow={  typeOfShow === "all" ? <FaLayerGroup color="green" />: <VscLayersActive color="blue" /> }
-           count={typeOfShow === "all" ? groupCount:trackinGroup }
-           prefix1={"Group"    }
-          //  counter={GroupCount()}
-            // open={openGroups}
-            // setOpen={setOpenGroups}
-            // drawerWidth={240}
-            // anchor="left"
-            // drHight={"103ed 0vh"}
+            setShowModal={setOpenGroups}
+            showModal={openGroups}
+            iconToShow={
+              typeOfShow === "all" ? (
+                <FaLayerGroup color="green" />
+              ) : (
+                <VscLayersActive color="blue" />
+              )
+            }
+            count={typeOfShow === "all" ? groupCount : trackinGroup}
+            prefix1={"Group"}
           >
             <Category whatToshow={dataToshow} typeOfShow={typeOfShow} />
           </AntModal>

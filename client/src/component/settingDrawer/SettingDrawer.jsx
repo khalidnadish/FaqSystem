@@ -45,18 +45,18 @@ function SettingDrawer({ open, setOpen }) {
       mode: themeMode,
     },
 
-    typography: {
-      allVariants: {
-        fontFamily: "Noto Kufi Arabic",
-        fontWeight: "light",
-        textTransform: "none",
-        wordWrap: "break-word",
-        fontSize: ".8rem",
-      },
-      paper: {
-        background: "red",
-      },
-    },
+    // typography: {
+    //   allVariants: {
+    //     fontFamily: "Noto Kufi Arabic",
+    //     fontWeight: "light",
+    //     textTransform: "none",
+    //     wordWrap: "break-word",
+    //     fontSize: ".8rem",
+    //   },
+    //   paper: {
+    //     background: "red",
+    //   },
+    // },
   });
 
   const handleToggleMode = (event) => {
@@ -115,7 +115,7 @@ function SettingDrawer({ open, setOpen }) {
                 />
                 <Typography
                   sx={{ textSize: "3rem" }}
-                  textAlign={"center"}
+                 
                   mb={1}
                 >
                   {userName}
@@ -125,7 +125,7 @@ function SettingDrawer({ open, setOpen }) {
                     variant="outlined"
                     color="primary"
                     aria-label=""
-                    dense
+                   
                     size="small"
                   >
                     <Button>10 followers</Button>
@@ -137,7 +137,7 @@ function SettingDrawer({ open, setOpen }) {
               <Divider>
                 <FaUserEdit />
               </Divider>
-              <ListItem disablePadding dense>
+              <ListItem disablePadding >
                 <ListItemButton>
                   <ListItemIcon
                     sx={{
@@ -152,7 +152,7 @@ function SettingDrawer({ open, setOpen }) {
                   <ListItemText>Answers</ListItemText>
                 </ListItemButton>
               </ListItem>
-              <ListItem disablePadding dense>
+              <ListItem disablePadding >
                 <ListItemButton>
                   <ListItemIcon
                     sx={{
@@ -166,7 +166,7 @@ function SettingDrawer({ open, setOpen }) {
                   <ListItemText>Questions</ListItemText>
                 </ListItemButton>
               </ListItem>
-              <ListItem disablePadding dense>
+              <ListItem disablePadding >
                 <ListItemButton>
                   <ListItemIcon
                     sx={{
@@ -181,7 +181,7 @@ function SettingDrawer({ open, setOpen }) {
                   <ListItemText>Activity</ListItemText>
                 </ListItemButton>
               </ListItem>
-              <ListItem disablePadding dense>
+              <ListItem disablePadding >
                 <ListItemButton>
                   <ListItemIcon
                     sx={{
@@ -196,7 +196,7 @@ function SettingDrawer({ open, setOpen }) {
                   <ListItemText>Bookmark's</ListItemText>
                 </ListItemButton>
               </ListItem>
-              <ListItem disablePadding dense>
+              <ListItem disablePadding >
                 <ListItemButton>
                   <ListItemIcon
                     sx={{
@@ -248,7 +248,7 @@ function SettingItems({
 }) {
   return (
     <>
-      <ListItem disablePadding dense>
+      <ListItem disablePadding >
         <ListItemButton>
           <ListItemIcon
             sx={{
@@ -266,9 +266,9 @@ function SettingItems({
               alignItems="center"
             >
               {toggleLang ? (
-                <typography textAlign={"left"}>English Language</typography>
+                <Typography>English Language</Typography>
               ) : (
-                <typography textAlign={"left"}>Arabic Language</typography>
+                <Typography >Arabic Language</Typography>
               )}
 
               <Switch color={"primary"} onChange={handleToggleLang} />
@@ -276,7 +276,7 @@ function SettingItems({
           </ListItemText>
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding dense>
+      <ListItem disablePadding >
         <ListItemButton>
           <ListItemIcon
             sx={{
@@ -294,9 +294,9 @@ function SettingItems({
               alignItems="center"
             >
               {toggleMode ? (
-                <typography textAlign={"left"}>Night mode</typography>
+                <Typography >Night mode</Typography>
               ) : (
-                <typography textAlign={"left"}>Day mode</typography>
+                <Typography >Day mode</Typography>
               )}
 
               <Switch color={"warning"} onChange={handleToggleMode} />

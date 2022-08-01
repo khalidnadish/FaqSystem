@@ -1,4 +1,6 @@
+import React,{ useContext } from "react";
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
+import { UserDetail } from "@/helper/context/userContext";
 
 export const GroupCount = () => {
   const { data, dataIsLoading } = useAxiosToGetData("/Category/CategoryCount");
@@ -18,11 +20,15 @@ export const GroupCountYouFollow = (userId) => {
   }
 };
 
-export const QuastionFromPepoleYouFollow = (userId) => {
+export const PepoleYouFollowing = (userId) => {
+  const { followerCounter,setFollowerCounter } = useContext(UserDetail);
+
   const { data, dataIsLoading } = useAxiosToGetData(
     `/user/PepoleYouFollow/${userId}`
   );
   if (dataIsLoading) {
+    // alert(data[0].PepoleYouFollow)
+    // setFollowerCounter(data[0].PepoleYouFollow)
     return data[0].PepoleYouFollow;
   }
 };

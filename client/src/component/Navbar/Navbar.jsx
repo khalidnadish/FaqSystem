@@ -116,7 +116,7 @@ const Navbar = () => {
         </Container>
       </AppBar>
       {openDrawer &&
-      <Suspense fallback={<Loader xcolor={"red"} />}>
+      <Suspense fallback={<Loader xcolor={"error"} />}>
         <SettingDrawer
           open={openDrawer}
           setOpen={setOpenDrawer}

@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-
 export const FaqDetail = createContext();
 FaqDetail.displayName = "FAQContext>>>";
 

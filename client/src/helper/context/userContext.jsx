@@ -1,18 +1,25 @@
 import React, { useState, createContext } from "react";
-
+ 
 export const UserDetail = createContext();
 UserDetail.displayName = "UserContext>>>";
 
-export const UserProvider = ({ children }) => {
+export const UserProvider = ( props ) => {
   const [islogin, setIslogin] = useState(false);
   const [userName, setUserName] = useState("Nadish");
   const [userId, setUserId] = useState(1);
   const [themeMode, setThemeMode] = useState("light");
-  const [userAvatar, setUserAvatar] = useState(
-    "http://localhost:3001/images/avatar/nadish.jpg"
-  );
+  const [userAvatar, setUserAvatar] = useState("http://localhost:3001/images/avatar/nadish.jpg");
+  const [followerCounter, setFollowerCounter]= useState(0);
 
-  const value = {
+
+
+
+
+
+
+return(
+  <UserDetail.Provider
+   value={{
     userName: userName,
     setUserName: setUserName,
     userAvatar: userAvatar,
@@ -23,7 +30,20 @@ export const UserProvider = ({ children }) => {
     setUserAvatar: setUserAvatar,
     islogin: islogin,
     setIslogin: setIslogin,
-  };
+    followerCounter:followerCounter,
+    setFollowerCounter:setFollowerCounter,
+   }}>
 
-  return <UserDetail.Provider value={value}> {children}</UserDetail.Provider>;
-};
+     {props.children}
+   </UserDetail.Provider>
+
+
+
+
+
+)}
+
+
+
+
+ 

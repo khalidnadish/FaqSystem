@@ -1,4 +1,5 @@
-import { AiOutlineUserSwitch } from "react-icons/ai";
+import { GiShadowFollower } from "react-icons/gi";
+
 import { pepleFollowingYou } from "../../component/submenu/otherNavService";
 import BadgeBtn from "../badgeBtn/BadgeBtn";
 
@@ -10,8 +11,8 @@ export function PeopleFollowYou({
     <>
 <BadgeBtn
         variant={"contained"}
-        startIcon={<AiOutlineUserSwitch />}
-        count={cont}
+        startIcon={<GiShadowFollower />}
+        count={cont }
         xpad={"3px 10px 3px 10px"}
         // xcolor={"warning"}
         xcolor={"common"}

@@ -11,8 +11,8 @@ export function ShowAllButton({ handleShowAllFAQ }) {
 <>
 <BadgeBtn
         variant={"contained"}
-        startIcon={<BsFillEyeFill style={{margin:"0px"}}/>}
-        count={""}
+        startIcon={<BsFillEyeFill />}
+        // count={""}
         xpad={"3px 10px 3px 10px"}
         xcolor={"common"}
         iconcolor={"error.dark"}

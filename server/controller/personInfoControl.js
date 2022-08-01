@@ -1,11 +1,15 @@
 import { dataBase } from "../controller/database.js";
 import { configData } from "../helpeer/config.js";
-
+// --------------------------------------------------------------
 export function getPersonCouners(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
   const follow = parseInt(req.params.follow);
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
   console.log("personal info:" + personIdidToGet,follow);
-
+  console.log("target user : " ,personIdidToGet)
+  console.log("follow user : " ,follow)
+  console.log("personal info url:" + fullUrl);
+  console.log("getPersonCouners<Fired>");
   const sqlSelect = `SELECT userid,username,avatar,create_time,
 (SELECT   COUNT(distinct(groupid)) FROM   usergroup  WHERE    userid = ?) AS category,
 (SELECT    COUNT(*)  FROM   faq        WHERE    userid = ?) AS quastion,
@@ -14,7 +18,6 @@ export function getPersonCouners(req, res) {
 (SELECT    COUNT(*)  FROM   myflower   WHERE    followuser = ?) AS following1,
 (SELECT    COUNT(*)  FROM   myflower   WHERE    userid = ? and followuser=?) AS isYoufollowed
 FROM    user WHERE  userid = ? GROUP BY userid;`;
-
   dataBase.execute(
     sqlSelect,
     [
@@ -36,11 +39,13 @@ FROM    user WHERE  userid = ? GROUP BY userid;`;
     }
   );
 }
-
+// --------------------------------------------------------------
 export function getPersonCategory(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
-  console.log("personal info:" + personIdidToGet);
-
+  console.log("personal info data:" + personIdidToGet);
+  console.log("personal typeof data:" + typeof(personIdidToGet));
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  console.log("personal info url:" + fullUrl);
   const sqlSelect = `SELECT  usergroup.userid, usergroup.groupid,
                       (SELECT  category.catName FROM category
                       WHERE usergroup.groupid = category.catid)   AS catname
@@ -54,23 +59,14 @@ export function getPersonCategory(req, res) {
     res.status(200).send(data);
   });
 }
-
+// --------------------------------------------------------------
 export function getPersonQuastionDetail(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
   console.log("personal info:" + personIdidToGet);
-
   const sqlstatment = `SELECT  faq.faqid,faq.faq,faq.create_at,
-  (SELECT 
-          COUNT(answers.faqid)
-      FROM
-          answers
-      WHERE
-          answers.faqid = faq.faqid) AS ans_count
-FROM
-  nadish_site.faq
-WHERE
-  userid =?`;
-
+                       (SELECT  COUNT(answers.faqid)  FROM  answers
+                        WHERE answers.faqid = faq.faqid) AS ans_count
+                      FROM nadish_site.faq WHERE  userid =?`;
   dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
     if (err) {
       console.log(err);
@@ -79,23 +75,16 @@ WHERE
     res.status(200).send(data);
   });
 }
-
+// --------------------------------------------------------------
 export function getPersonAnsweredQuastion(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
   console.log("personal info:" + personIdidToGet);
-
   const sqlstatment = `SELECT   answers.ansid,answers.answer,answers.userid,answers.create_at,
-                        (SELECT   user.username  FROM  user
-                          WHERE
-                              user.userid = answers.userid) AS username,
-                      (SELECT user.avatar FROM  user
-                          WHERE
-                              user.userid = answers.userid) AS avatar
-                      FROM
-                        answers
-                      WHERE
-                          answers.faqid = ?`;
-
+                        (SELECT user.username  FROM  user
+                          WHERE user.userid = answers.userid) AS username,
+                        (SELECT user.avatar FROM  user
+                          WHERE user.userid = answers.userid) AS avatar
+                       FROM answers WHERE  answers.faqid = ?`;
   dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
     if (err) {
       console.log(err);
@@ -104,7 +93,7 @@ export function getPersonAnsweredQuastion(req, res) {
     res.status(200).send(data);
   });
 }
-
+// --------------------------------------------------------------
 export function getPersonAnsweredDetail(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
   console.log("personal info:" + personIdidToGet);
@@ -115,9 +104,7 @@ export function getPersonAnsweredDetail(req, res) {
                       (SELECT  user.username FROM  user   WHERE   user.userid = usercreator) AS usercreator_name,
                       (SELECT  user.avatar   FROM  user   WHERE   user.userid = usercreator) AS usercreator_avatar,
                       (SELECT  faq.create_at FROM  faq    WHERE faq.faqid = answers.faqid) AS quastion_date
-
                     FROM  answers WHERE userid = ?`;
-
   dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
     if (err) {
       console.log(err);
@@ -126,15 +113,12 @@ export function getPersonAnsweredDetail(req, res) {
     res.status(200).send(data);
   });
 }
-
-
-
+// --------------------------------------------------------------
 export function getPersonFollowerDetail(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
   console.log("personal info:" + personIdidToGet);
-
   const sqlstatment = `SELECT  myflower.userid,myflower.followuser,myflower.create_at,myflower.id,myflower.create_at,
-                      (SELECT  user.username  FROM  user   WHERE  myflower.userid = user.userid) mainusername,
+                    
                       (SELECT  user.username  FROM  user   WHERE  myflower.followuser = user.userid) followusername,
                       (SELECT  user.avatar    FROM  user   WHERE  myflower.followuser = user.userid) followavatar
                       FROM myflower where userid=?`
@@ -147,17 +131,13 @@ export function getPersonFollowerDetail(req, res) {
     res.status(200).send(data);
   });
 }
-
-
-
+// --------------------------------------------------------------
 export function getPersonFollowingDetail(req, res) {
   const personIdidToGet = parseInt(req.params.userid);
   console.log("personal info:" + personIdidToGet);
-
   const sqlstatment = `SELECT  myflower.userid,myflower.followuser,myflower.create_at,myflower.id,myflower.create_at,
-                      (SELECT  user.username  FROM  user   WHERE  myflower.userid = user.userid) mainusername,
-                      (SELECT  user.username  FROM  user   WHERE  myflower.followuser = user.userid) followusername,
-                      (SELECT  user.avatar    FROM  user   WHERE  myflower.followuser = user.userid) followavatar
+                      (SELECT  user.username  FROM  user   WHERE  myflower.userid = user.userid) followusername,
+                      (SELECT  user.avatar    FROM  user   WHERE  myflower.userid = user.userid) followavatar
                       FROM myflower where followuser=?`
   
   dataBase.execute(sqlstatment, [personIdidToGet], (err, data) => {
@@ -168,22 +148,12 @@ export function getPersonFollowingDetail(req, res) {
     res.status(200).send(data);
   });
 }
-
-
-
-
-
+// --------------------------------------------------------------
 export function checkIsFollowed(req, res) {
   const userid = parseInt(req.params.userid);
   const follow = parseInt(req.params.follow);
-
-
   console.log(userid,follow);
-
   const sqlstatment =  `SELECT count(userid) as checkfollow FROM nadish_site.myflower  where userid=? and followuser=?`
-  
-  
-  
   dataBase.execute(sqlstatment, [userid,follow], (err, data) => {
     if (err) {
       console.log(err);
@@ -192,8 +162,39 @@ export function checkIsFollowed(req, res) {
     res.status(200).send(data);
   });
 }
+// --------------------------------------------------------------
+export function FollowUser(req, res) {
+  const userid = parseInt(req.params.userid);
+  const follow = parseInt(req.params.follow);
+  console.log(userid,follow);
+  const sqlstatment =  `INSERT INTO myflower (userid, followuser) VALUES (?,?);`
+  dataBase.execute(sqlstatment, [userid,follow], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    // console.log(data);
+    res.status(200).send("follow"  + userid + follow );
+  });
+}
+// --------------------------------------------------------------
+export function UnFollowUser(req, res) {
+  const userid = parseInt(req.params.userid);
+  const follow = parseInt(req.params.follow);
+  console.log(userid,follow);
+  const sqlstatment =  `DELETE FROM myflower WHERE (userid = ?  and followuser=?);`
+  dataBase.execute(sqlstatment, [userid,follow], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(data);
+    res.status(200).send("unfollow");
+  });
+}
 
 
+
+
+ 
 
 
 
@@ -209,7 +210,10 @@ export default {
   getPersonAnsweredDetail,
   getPersonFollowerDetail,
   getPersonFollowingDetail,
-  checkIsFollowed
+  checkIsFollowed,
+  FollowUser,
+  UnFollowUser
+
   // quastionCount,
   // anwerCount,
   // followerCount,

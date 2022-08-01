@@ -27,7 +27,7 @@ app.use(
 );
 app.use(compression());
 app.use(cors());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/images", express.static("images"));
 
@@ -39,8 +39,11 @@ app.use("/person", personInfoRoutes);
 
 
 function khalid(req, res, next) {
-  console.log("khalid");
-  console.log("env : " + configData.avatarUrl);
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  console.log("---------------------------------------------------------");
+  console.log("request URL:" + fullUrl);
+  console.log("---------------------------------------------------------");
+  // console.log("env : " + configData.avatarUrl);
   next();
 }
 

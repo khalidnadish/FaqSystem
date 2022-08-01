@@ -1,17 +1,33 @@
+import React,{ useContext, useEffect } from "react";
 import { FaUsers } from "react-icons/fa";
-import { QuastionFromPepoleYouFollow } from "../../component/submenu/otherNavService";
+import { PepoleYouFollowing } from "../../component/submenu/otherNavService";
 import BadgeBtn from "../badgeBtn/BadgeBtn";
+import { UserDetail } from "@/helper/context/userContext";
 
 export function PepoleYouTrackAction({
-  setOpenUsers, userId, setdataToshow, setTypeOfShow,
+  setOpenUsers,
+  userId,
+  setdataToshow,
+  setTypeOfShow,
 }) {
-  const cont=  QuastionFromPepoleYouFollow(userId)
+  const { followerCounter ,setFollowerCounter} = useContext(UserDetail);
+  const cont = PepoleYouFollowing(userId);
+  // alert("ff  " +cont)
+  
+useEffect(() => {
+     setFollowerCounter( cont ) 
+}, [cont])
+
+
   return (
     <>
-<BadgeBtn
+
+
+
+    <BadgeBtn
         variant={"contained"}
         startIcon={<FaUsers />}
-        count={cont}
+        count={followerCounter}
         xpad={"3px 10px 3px 10px"}
         // xcolor={"warning"}
         xcolor={"common"}
@@ -20,10 +36,6 @@ export function PepoleYouTrackAction({
         xdisableElevation={true}
         TypographyVariant="button"
         TypographyColor="primary.main"
-
-
-
-
         onClick={() => {
           setOpenUsers(true);
           setdataToshow(`/user/showflower/${userId}`);

@@ -3,6 +3,7 @@ import { configData } from "../helpeer/config.js";
 
 export function getAll(req, res) {
   // res.cookie("sky", "nadish", { httpOnly: true });
+
   const sqlstatment = `SELECT f.faqid, f.faq, f.userid, f.catId, f.sututes, f.create_at, f.faqcolseoropen,
    f.update_at, u.username as autherName, u.email, u.avatar, count(*) as  AnswerCount, c.catName
  FROM nadish_site.faq f

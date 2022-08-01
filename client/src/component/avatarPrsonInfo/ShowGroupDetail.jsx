@@ -10,9 +10,11 @@ import { TbArrowsJoin } from "react-icons/tb";
 
 function ShowGroupDetail({ userid }) {
   const { data, dataIsLoading } = useAxiosToGetData(
-    `http://localhost:3001/person/getPersonCategory/${userid}`
+    `/person/getPersonCategory/${userid}`
   );
+ 
 
+  
   return data?.map((grp) => {
     return (
       <React.Fragment key={grp.userid + grp.groupid}>

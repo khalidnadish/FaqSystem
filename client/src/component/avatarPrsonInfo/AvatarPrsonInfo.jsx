@@ -1,5 +1,4 @@
-import { InfoSection } from "./InfoSection";
-
+import React, { useState, useContext ,useEffect} from "react";
 import PlsHelpArea from "./PlsHelpArea";
 import TakeActionArea from "./TakeActionArea";
 import PersonFollowing from "./PersonFollowing";
@@ -14,12 +13,30 @@ import CardMedia from "@mui/material/CardMedia";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import { UserDetail } from "@/helper/context/userContext";
 import useAxiosToGetData from "../../helper/custemHook/useAxiosToGetData";
 
-function AvatarPrsonInfo({ userid,myUserId }) {
+function AvatarPrsonInfo({ targetUserid }) {
+  
+  const { userId } = useContext(UserDetail);
   const { data, dataIsLoading } = useAxiosToGetData(
-    `http://localhost:3001/person/${userid}/1`
+    `/person/${targetUserid}/${userId}`
   );
+  const [followingTarget, setFollowingTarget] = useState(0)
+
+
+useEffect(() => {
+   
+    if (dataIsLoading) {
+ 
+       setFollowingTarget(data[0].following1)
+    }
+}, [dataIsLoading])
+
+
+ 
+ 
+ 
 
   return (
     <>
@@ -54,7 +71,7 @@ function AvatarPrsonInfo({ userid,myUserId }) {
                 category={data[0].category}
                 avatarSrc={data[0].avatar}
                 cr_date={data[0].create_time}
-              /> 
+              />
             )}
           </Grid>
           <Grid item xs={3}>
@@ -82,35 +99,44 @@ function AvatarPrsonInfo({ userid,myUserId }) {
             )}
           </Grid>
 
-
           <Grid item xs={3} width={"100%"}>
-                {dataIsLoading && (
-                  <PersonFollower
-                    follower={data[0].follower}
-                    userid={data[0].userid}
-                    username={data[0].username}
-                    category={data[0].category}
-                    avatarSrc={data[0].avatar}
-                    cr_date={data[0].create_time}
-                  />
-                )}
-              </Grid>
-              <Grid item xs={3}>
-                {dataIsLoading && (
-                  <PersonFollowing
-                    following={data[0].following1}
-                    userid={data[0].userid}
-                    username={data[0].username}
-                    category={data[0].category}
-                    avatarSrc={data[0].avatar}
-                    cr_date={data[0].create_time}
-                  />
-                )}
-              </Grid>
+            {dataIsLoading && (
+              <PersonFollower
+                follower={data[0].follower}
+                userid={data[0].userid}
+                username={data[0].username}
+                category={data[0].category}
+                avatarSrc={data[0].avatar}
+                cr_date={data[0].create_time}
+              />
+            )}
+          </Grid>
+          <Grid item xs={3}>
+            {/* recheck counter on follow or unfollow */}
+            {dataIsLoading && (
+              <PersonFollowing
+                following={followingTarget}
+                userid={data[0].userid}
+                username={data[0].username}
+                category={data[0].category}
+                avatarSrc={data[0].avatar}
+                cr_date={data[0].create_time}
+              />
+            )}
+          </Grid>
         </Grid>
-        {dataIsLoading && <TakeActionArea dataIsLoading={dataIsLoading} isYoufollowed={data[0]?.isYoufollowed}/>}
+        {dataIsLoading && (
+          <TakeActionArea
+            dataIsLoading={dataIsLoading}
+            isYoufollowed={data[0]?.isYoufollowed}
+            targetUserid={data[0].userid}
+            userId={userId}
+            setFollowingTarget={setFollowingTarget}
+            
+
+          />
+        )}
         <PlsHelpArea dataIsLoading={dataIsLoading} />
-        
       </Box>
     </>
   );

@@ -11,13 +11,14 @@ import { axios } from "../axios/axios";
 //  });
 
 const useAxiosToGetData = (urlx) => {
+  console.log("urlx   " + urlx)
   const [data, setData] = useState(null);
   const [dataIsLoading, setDataIsLoading] = useState(null);
   const [error, setError] = useState(null);
-
   const collectData = async (urlx) => {
     try {
       const resposn = await axios.get(urlx);
+      // v(axios)
       if (resposn) {
         setData(resposn.data);
         setDataIsLoading(true);

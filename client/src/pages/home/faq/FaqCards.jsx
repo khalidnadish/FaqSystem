@@ -179,7 +179,7 @@ const MainCardHeader = ({
             anchor="left"
             drHight={"100vh"}
           >
-            <AvatarPrsonInfo userid={userid}/>
+            <AvatarPrsonInfo targetUserid={userid}/>
           </LeftDrawer>
         </Suspense>
       )}

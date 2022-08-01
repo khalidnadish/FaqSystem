@@ -1,7 +1,8 @@
 # show user prefix of data Summry
 GET  http://localhost:3001/person/34
 #show user group detal 
-GET http://localhost:3001/person/getPersonCategory/33
+ 
+GET http://localhost:3001/person/getPersonCategory/2
 # show user Quastion And Answr on Each Quastion
 GET http://localhost:3001/person/getPersonQuastionDetail/33
 # reply on click for quastion

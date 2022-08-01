@@ -13,7 +13,7 @@ import { Avatar, Box } from "@mui/material";
 
 function ShowFollowingData({ userid }) {
   const { data, dataIsLoading } = useAxiosToGetData(
-    `http://localhost:3001/person/getPersonFollowingDetail/${userid}`
+    `/person/getPersonFollowingDetail/${userid}`
   );
 
   return data?.map((following) => {
@@ -49,7 +49,7 @@ function ShowFollowingData({ userid }) {
                   align={"left"}
                   ml={2}
                 >
-                  {following.followusername}
+                  {following.followusername} /
                 </Typography>
                 <Typography
                   color={"primary"}

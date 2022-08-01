@@ -16,8 +16,8 @@ const BadgeBtn = ({
   xborder = 1,
   xdisableElevation = false,
   TypographyVariant = "body1",
-  TypographyColor="text.disabled",
-   TypographySize=".75rem"
+  TypographyColor = "text.disabled",
+  TypographySize = ".75rem",
 }) => {
   return (
     <>
@@ -44,7 +44,12 @@ const BadgeBtn = ({
           }}
           onClick={onClick}
         >
-          <Typography variant={TypographyVariant} color={TypographyColor} fontSize={TypographySize} sx={{ margin: "auto" }}>
+          <Typography
+            variant={TypographyVariant}
+            color={TypographyColor}
+            fontSize={TypographySize}
+            sx={{ margin: "auto" }}
+          >
             {count}
           </Typography>
         </Button>
