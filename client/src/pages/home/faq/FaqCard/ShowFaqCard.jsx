@@ -5,12 +5,12 @@ import React, {
   useEffect,
   useCallback,
 } from "react";
-import { FaqDetail } from "../../../helper/context/FAQContext";
+import { FaqDetail } from "../../../../helper/context/FAQContext";
 import Grid from "@mui/material/Grid";
 import { FixedSizeList } from "react-window";
 
 const FaqCrads = lazy(() => import("./FaqCards"));
-const Loader = lazy(() => import("../../../component/loader/Loader"));
+const Loader = lazy(() => import("../../../../component/loader/Loader"));
 
 const ShowFaqCard = ({ faqdata }) => {
   const { faqInfo, setFaqInfo } = useContext(FaqDetail);

@@ -50,3 +50,13 @@ export const favoriteQuationCount = (userId) => {
     return data[0].favoritequation;
   }
 };
+
+
+export const historyQuationCount = (userId) => {
+  const { data, dataIsLoading } = useAxiosToGetData(
+    `/user/histoyQuastionCount/${userId}`
+  );
+  if (dataIsLoading) {
+    return data[0].historyQ;
+  }
+};

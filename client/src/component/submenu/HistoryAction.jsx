@@ -1,8 +1,8 @@
 import { BsClockHistory } from "react-icons/bs";
-import { favoriteQuationCount } from "./otherNavService";
+import { historyQuationCount } from "./otherNavService";
 import BadgeBtn from "../badgeBtn/BadgeBtn";
 export function HistoryAction({ userId }) {
-  const cont=  favoriteQuationCount(userId)
+  const cont=  historyQuationCount(userId)
   return (
     <>
 

@@ -6,6 +6,7 @@ const FaqId = lazy(() => import("../FaqId"));
 const Loader = lazy(() => import("../../../../component/loader/Loader"));
 
 function AnswerDrawer({ open, setOpen, faqid }) {
+ 
   return (
     <>
       <Drawer

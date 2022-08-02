@@ -191,6 +191,16 @@ export function FollowUserAction(req, res) {
 }
 
 
+export function histoyQuastionCount(req, res) {
+  let userId = req.params.userId;
+  const sqlSelect = `SELECT  count(userid) historyQ
+  FROM historyquastion u
+  WHERE userid = ?`;
+  dataBase.execute(sqlSelect, [userId], (err, data) => {
+    if (err) throw err;
+    res.send(data);
+  });
+}
 
 
 
@@ -205,5 +215,6 @@ export default {
   PepoleFollowinYouCount,
   showWhosFollowing,
   FollowUserAction,
+  histoyQuastionCount
   // showWhosFollowing, #testing gitHub site
 };

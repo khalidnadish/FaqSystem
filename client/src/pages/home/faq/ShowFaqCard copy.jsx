@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useContext, useEffect } from "react";
 import { FaqDetail } from "../../../helper/context/FAQContext";
 import Grid from "@mui/material/Grid";
 
-const FaqCrads = lazy(() => import("./FaqCards"));
+const FaqCrads = lazy(() => import("./FaqCard/FaqCards"));
 const Loader = lazy(() => import("../../../component/loader/Loader"));
 
 

@@ -12,7 +12,8 @@ import {
   PepoleYouFollow,
   PepoleFollowinYouCount,
   showWhosFollowing,
-  FollowUserAction
+  FollowUserAction,
+  histoyQuastionCount
 } from "../controller/userControl.js";
 
 const router = express.Router();
@@ -39,12 +40,13 @@ router.post("/FollowUserAction", FollowUserAction);
 
 router.post("/upload/:userId", upload.single("avatar"), avatarUpload);
 
-router.get("/", getAlluser);
 router.get("/showflower/:userId", showFlloer);
 router.get("/PepoleYouFollow/:userId", PepoleYouFollow);
 router.get("/PepoleFollowinYouCount/:userId", PepoleFollowinYouCount);
 router.get("/showWhosFollowing/:userId", showWhosFollowing);
+router.get("/histoyQuastionCount/:userId", histoyQuastionCount);
 
+router.get("/", getAlluser);
 // router.post("/1000", newUser);
 
 export default router;

@@ -104,10 +104,7 @@ function OtherNav({ userId }) {
                     <ToggleButton value="module" aria-label="module">
                       <ViewModuleIcon />
                     </ToggleButton>
-                    {/* <ToggleButton value="module" aria-label="module"> */}
-                      <ShowAllButton handleShowAllFAQ={handleShowAllFAQ} />
-                    {/* </ToggleButton> */}
-                  </ToggleButtonGroup>
+                 </ToggleButtonGroup>
                 </Grid>
 
                 <Grid item xs={3} sm={3} md={2} align="center">
@@ -116,9 +113,9 @@ function OtherNav({ userId }) {
                 <Grid item xs={3} sm={3} md={2} align="center">
                   <ShowGroupFilterCounter conter={faqInfo.recordsCount} />
                 </Grid>
-                {/* <Grid item xs={3} sm={3} md={2} align="center">
+                <Grid item xs={3} sm={3} md={2} align="center">
                   <ShowAllButton handleShowAllFAQ={handleShowAllFAQ} />
-                </Grid> */}
+                </Grid>
               </Grid>
             </Grid>
 
