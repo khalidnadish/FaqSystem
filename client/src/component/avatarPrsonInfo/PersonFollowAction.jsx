@@ -29,7 +29,6 @@ const PersonFollowAction = ({ isYoufollowed, targetUserid, userId,setFollowingTa
       const resposn = await axios.get(`/user/PepoleYouFollow/${userId}`);
       if (resposn) {
          setFollowerCounter(resposn.data[0].PepoleYouFollow);
-         
         }
     } catch (error) {
       console.log("FollowUser Error :", error);

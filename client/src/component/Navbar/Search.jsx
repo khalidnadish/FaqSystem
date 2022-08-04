@@ -19,7 +19,7 @@ function MySearch() {
         <TextField
          
           id="filled-size-small"
-          defaultValue="Small"
+          // defaultValue="Small"
           variant="filled"
           size="small"
           fullWidth

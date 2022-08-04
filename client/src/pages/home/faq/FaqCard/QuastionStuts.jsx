@@ -3,21 +3,21 @@ import QuickreplyIcon from "@mui/icons-material/Quickreply";
 import BadgeBtn from "../../../../component/badgeBtn/BadgeBtn";
  
 
-export function ReplayCounter({ answerCount }) {
+export function QuastionStuts({ status }) {
   return (
 <>
 <BadgeBtn
         variant={"contained"}
-        startIcon={<QuickreplyIcon  size={'1.3em'} />}
-        count={answerCount}
+        // startIcon={<QuickreplyIcon  size={'1.3em'} />}
+        count={status==="1" ? "Open" : "Closed"}
         xpad={"3px 5px 3px 5px"}
-        xcolor={"grey"}
+        xcolor={status==="1" ? "success" : "error"}
         // xcolor={"common"}
         iconcolor={"primary.light"}
         xborder={0.5}
         xdisableElevation={true}
         TypographyVariant="button"
-        TypographyColor="primary.main"
+        TypographyColor="background.paper"
         direction="row"
         // onClick={() => {
         //   setdataToshow(`/category/getUserCategory/${userId}`);

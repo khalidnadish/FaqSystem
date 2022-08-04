@@ -3,7 +3,6 @@ import { MdOutlineQuickreply, MdBookmarkBorder } from "react-icons/md";
 
 import useAxiosToGetData from "../../../helper/custemHook/useAxiosToGetData";
 
-import red from "@mui/material/colors/red";
 import EditIcon from "@mui/icons-material/Edit";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -25,6 +24,7 @@ function FaqId({ faqid }) {
   const { data: faqwithid, dataIsLoading: isLoading } = useAxiosToGetData(
     `faq/${faqid}`
   );
+  // alert(faqid)
 
   const { data: rowCount, dataIsLoading: isRrowCount } = useAxiosToGetData(
     `faq/getAnswerCountByfaqid/${faqid}`
@@ -35,13 +35,10 @@ function FaqId({ faqid }) {
       <AppBar
         position="sticky"
         elevation={3}
-        dense
-        sx={{
-          backgroundColor: "background.paper",
-        }}
+        sx={{ backgroundColor: "background.paper" }}
       >
         <Container fixed>
-          <Toolbar variant="dense">
+          <Toolbar>
             <Container sx={{ marginTop: "15px", marginBottom: "15px" }}>
               {isLoading && (
                 <QuastionCard
@@ -89,7 +86,7 @@ function QuastionCard({
     >
       <CardHeader
         avatar={
-          <Avatar src={avatar} sx={{ bgcolor: red[500] }} aria-label="recipe">
+          <Avatar src={avatar} aria-label="recipe">
             Q
           </Avatar>
         }

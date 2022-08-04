@@ -31,7 +31,7 @@ function PepoleYouFollow({ whatToshow, typeOfShow }) {
           <List
             sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
             component="nav"
-            dense
+           
             aria-labelledby="nested-list-subheader"
             subheader={
               <ListSubheader component="div" id="nested-list-subheader">

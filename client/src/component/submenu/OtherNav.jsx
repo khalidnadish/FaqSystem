@@ -23,7 +23,7 @@ import { FaLayerGroup } from "react-icons/fa";
 import { VscLayersActive } from "react-icons/vsc";
 import { GroupCount } from "../../component/submenu/otherNavService";
 import { GroupCountYouFollow } from "../../component/submenu/otherNavService";
-import { RiUserUnfollowLine } from "react-icons/ri"
+
  
 
 const Loader = lazy(() => import("../loader/Loader"));
@@ -65,7 +65,7 @@ function OtherNav({ userId }) {
         }}
       >
         <Paper
-          elevation={15}
+          elevation={23}
           sx={{
             justifyContent: "space-between",
 
@@ -74,6 +74,7 @@ function OtherNav({ userId }) {
             alignItems: "center",
             position: "absolute",
             top: -19,
+            
           }}
         >
           <Grid

@@ -16,17 +16,13 @@ import useAxiosToGetData from "../../../helper/custemHook/useAxiosToGetData";
 import styled from "@emotion/styled";
 
 const ProfileBoxwraper = styled(Box)({
-  // backgroundColor: "whitesmoke",
-  // width: "100%",
   borderRadius: "8px",
-  // flexDirection: "row",
   justifyContent: "space-between",
-  // display: "flex",
-
   display: { xs: "block", sm: "block" },
 });
 
 export default function FaqAnswerId({ id }) {
+
   const { data: faqwithid, dataIsLoading: isLoading } = useAxiosToGetData(
     `faq/AnswerByfaqid/${id}`
   );

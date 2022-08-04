@@ -17,7 +17,7 @@ function App() {
       <CssBaseline />
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          {/* <Paper> */}
+          {/* <Paper bgcolor={"warning.main"}> */}
           <Suspense fallback={<Loader xcolor="error" />}>
             <MyRoutes />
           </Suspense>

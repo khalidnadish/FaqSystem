@@ -1,15 +1,21 @@
+import React,{ useContext, useEffect } from "react";
 import { BsClockHistory } from "react-icons/bs";
 import { historyQuationCount } from "./otherNavService";
 import BadgeBtn from "../badgeBtn/BadgeBtn";
+import { UserDetail } from "@/helper/context/userContext";
+
 export function HistoryAction({ userId }) {
-  const cont=  historyQuationCount(userId)
+  const { historyCounter ,setHistoryCounter} = useContext(UserDetail);
+  const cont = historyQuationCount(userId);
+  useEffect(() => {
+    setHistoryCounter( cont ) 
+}, [cont])
   return (
     <>
-
-<BadgeBtn
+      <BadgeBtn
         variant={"contained"}
         startIcon={<BsClockHistory />}
-        count={cont}
+        count={historyCounter}
         xpad={"3px 10px 3px 10px"}
         // xcolor={"warning"}
 
@@ -19,9 +25,6 @@ export function HistoryAction({ userId }) {
         xdisableElevation={true}
         TypographyVariant="button"
         TypographyColor="primary.main"
-
-
-
         // onClick={() => {
         //   setdataToshow("/category");
         //   setOpenGroups(true);
@@ -29,7 +32,6 @@ export function HistoryAction({ userId }) {
         // }}
         toolTip="History  Question you Wach It"
       />
-
-      </>
+    </>
   );
 }

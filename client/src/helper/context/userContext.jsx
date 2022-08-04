@@ -10,13 +10,7 @@ export const UserProvider = ( props ) => {
   const [themeMode, setThemeMode] = useState("light");
   const [userAvatar, setUserAvatar] = useState("http://localhost:3001/images/avatar/nadish.jpg");
   const [followerCounter, setFollowerCounter]= useState(0);
-
-
-
-
-
-
-
+  const [historyCounter, setHistoryCounter]= useState(0);
 return(
   <UserDetail.Provider
    value={{
@@ -32,6 +26,8 @@ return(
     setIslogin: setIslogin,
     followerCounter:followerCounter,
     setFollowerCounter:setFollowerCounter,
+    historyCounter:historyCounter,
+    setHistoryCounter:setHistoryCounter
    }}>
 
      {props.children}

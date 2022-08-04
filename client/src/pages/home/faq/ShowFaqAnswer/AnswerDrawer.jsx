@@ -15,19 +15,16 @@ function AnswerDrawer({ open, setOpen, faqid }) {
         open={open}
         role="presentation"
         BackdropProps={{ invisible: true }}
-        // disableSwipeToOpen
         PaperProps={{
           sx: {
             width: "90%",
             borderRadius: "8px 8px 0px 0px",
             margin: "auto",
-            // marginRight: "auto",
-            // marginLeft: "auto",
             maxHeight: "95vh",
             bgcolor: "background.paper",
           },
         }}
-        // width={"50%"}
+
 
         onClose={() => {
           setOpen(false);

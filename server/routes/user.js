@@ -13,7 +13,8 @@ import {
   PepoleFollowinYouCount,
   showWhosFollowing,
   FollowUserAction,
-  histoyQuastionCount
+  histoyQuastionCount,
+  addToHistory
 } from "../controller/userControl.js";
 
 const router = express.Router();
@@ -37,6 +38,7 @@ const upload = multer({ storage: storage });
 router.post("/", createUser);
 router.post("/login", loginUser);
 router.post("/FollowUserAction", FollowUserAction);
+router.post("/addToHistory", addToHistory);
 
 router.post("/upload/:userId", upload.single("avatar"), avatarUpload);
 
