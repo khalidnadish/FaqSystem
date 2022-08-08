@@ -18,7 +18,9 @@ const BadgeBtn = ({
   TypographyVariant = "body1",
   TypographyColor = "text.disabled",
   TypographySize = ".75rem",
-  direction='column'
+  direction='column',
+  xbtmborder
+
 }) => {
   return (
     <>
@@ -32,11 +34,12 @@ const BadgeBtn = ({
             display: "flex",
             alignItems: "center",
             padding: xpad,
-            width: "95%",
+            width: "fit-content",
             minWidth: 0,
             minHeight: 0,
             flexDirection: { xs: direction, md: direction },
             border: xborder,
+            borderBottom: xbtmborder,
             borderColor: xborderColor,
             "& .MuiButton-startIcon": {
               margin: 0,

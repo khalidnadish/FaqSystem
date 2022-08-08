@@ -11,6 +11,7 @@ export const UserProvider = ( props ) => {
   const [userAvatar, setUserAvatar] = useState("http://localhost:3001/images/avatar/nadish.jpg");
   const [followerCounter, setFollowerCounter]= useState(0);
   const [historyCounter, setHistoryCounter]= useState(0);
+  const [forceRenderToggole, setForceRenderToggole]= useState(true);
 return(
   <UserDetail.Provider
    value={{
@@ -27,7 +28,9 @@ return(
     followerCounter:followerCounter,
     setFollowerCounter:setFollowerCounter,
     historyCounter:historyCounter,
-    setHistoryCounter:setHistoryCounter
+    setHistoryCounter:setHistoryCounter,
+    forceRenderToggole:forceRenderToggole,
+    setForceRenderToggole:setForceRenderToggole
    }}>
 
      {props.children}

@@ -195,6 +195,64 @@ export function AnswerDataByFAQId(req, res) {
 
 
 
+export function addOrRemoveFavorte(req, res) {
+  const userId = parseInt(req.params.userId);
+  const faqid = parseInt(req.params.faqid);
+
+   console.log(userId)
+   console.log(faqid)
+  // let userId=1;
+  // let faqid=2;
+
+
+  let check_date = `SELECT * FROM  favoritequastion  WHERE  (userid=? AND faqid=?)`
+  dataBase.execute(check_date,[userId, faqid],(err, results) => {
+      err && console.log(err)
+      results.length===0 ? addToFavorite(userId, faqid):RemoveFromFavorite(userId, faqid)
+      results.length===0 ? res.send({ msgs: "added" }) :res.send({ msgs: "removed" })
+    }
+  )};
+
+
+function addToFavorite (userId, faqid) {
+  let inset_date = `INSERT INTO favoritequastion (userid, faqid) VALUES (?,?)`
+  dataBase.execute(inset_date,[userId, faqid],(err, results) => {
+      err && console.log(err)
+      console.log(" favorte add well  >>>")
+ 
+    }
+  );
+}
+
+function RemoveFromFavorite (userId, faqid) {
+  let remove_date = `DELETE FROM favoritequastion where userid=? and faqid=?`
+  dataBase.execute(remove_date,[userId, faqid],(err, results) => {
+      err && console.log(err)
+      console.log(" favorte remove well  >>>")
+ 
+    }
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -209,6 +267,7 @@ export default {
   getUserCategory,
   favoriteQuation,
   QuationDataById,
-  AnswerDataByFAQId
+  AnswerDataByFAQId,
+  addOrRemoveFavorte
 
 };

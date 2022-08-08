@@ -25,11 +25,8 @@ export default function FaqCrads({
   Groupid,
   faqcolseoropen
 }) {
-  const [showAnswer, setShowAnswer] = useState(false);
-  const handleReply = () => {
-    setShowAnswer(true);
-  };
 
+  
   const cardStyle = {
     width: "99%",
     border: `1.5px solid`,

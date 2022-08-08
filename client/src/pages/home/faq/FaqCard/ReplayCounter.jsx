@@ -14,10 +14,12 @@ export function ReplayCounter({ answerCount }) {
         xcolor={"grey"}
         // xcolor={"common"}
         iconcolor={"primary.light"}
-        xborder={0.5}
+        xborder={"10px 10px 10px 10px solid"}
         xdisableElevation={true}
         TypographyVariant="button"
         TypographyColor="primary.main"
+        // xbtmborder={4}
+        // xborderColor={"info.main"}
         direction="row"
         // onClick={() => {
         //   setdataToshow(`/category/getUserCategory/${userId}`);

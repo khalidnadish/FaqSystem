@@ -37,8 +37,9 @@ export function MainCardContent({
 
           <Grid item xs={6} align="right">
             <Grid container>
-              <Grid item xs={7}>
-                <AddToFavorite />
+              <Grid item xs={5.5}></Grid>
+              <Grid item xs={2}>
+                <AddToFavorite currentUse={userid} faqid={faqid} />
               </Grid>
               <Grid item xs={2}>
                 <ReplayCounter answerCount={answerCount} />

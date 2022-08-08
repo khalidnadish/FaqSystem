@@ -1,4 +1,4 @@
-import React, { useContext, lazy, Suspense, useState,useEffect } from "react";
+import React, { useContext, lazy, Suspense, useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import { FaqDetail } from "../../helper/context/FAQContext";
 import ViewListIcon from "@mui/icons-material/ViewList";
@@ -26,8 +26,6 @@ import { GroupCountYouFollow } from "../../component/submenu/otherNavService";
 import { Button } from "@mui/material";
 import QandA from "../../component/QuastionControl/QandA";
 
- 
-
 const Loader = lazy(() => import("../loader/Loader"));
 const Category = lazy(() => import("../../pages/home/faq/Category/Category"));
 const PepoleYouFollow = lazy(() =>
@@ -40,13 +38,9 @@ function OtherNav({ userId }) {
   const [openGroups, setOpenGroups] = useState(false);
   const [dataToshow, setdataToshow] = useState("/category");
   const [typeOfShow, setTypeOfShow] = useState("all");
-  const [view, setView] = React.useState("list");
-  
-  const { setFaqUrl, faqInfo } = useContext(FaqDetail);
-  
- 
-  
+  const [view, setView] = useState("list");
 
+  const { setFaqUrl, faqInfo } = useContext(FaqDetail);
 
   const handleShowAllFAQ = () => {
     setFaqUrl(`/faq`);
@@ -56,8 +50,6 @@ function OtherNav({ userId }) {
   };
   const groupCount = GroupCount();
   const trackinGroup = GroupCountYouFollow(userId);
-
-
 
   return (
     <>
@@ -76,7 +68,6 @@ function OtherNav({ userId }) {
             alignItems: "center",
             position: "absolute",
             top: -19,
-            
           }}
         >
           <Grid
@@ -107,7 +98,7 @@ function OtherNav({ userId }) {
                     <ToggleButton value="module" aria-label="module">
                       <ViewModuleIcon />
                     </ToggleButton>
-                 </ToggleButtonGroup>
+                  </ToggleButtonGroup>
                 </Grid>
 
                 <Grid item xs={3} sm={3} md={2} align="center">
@@ -177,7 +168,7 @@ function OtherNav({ userId }) {
                     setTypeOfShow={setTypeOfShow}
                   />
                 </Grid>
-                  <Checktn/>
+                <Checktn />
               </Grid>
             </Grid>
           </Grid>
@@ -221,18 +212,14 @@ function OtherNav({ userId }) {
 
 export default OtherNav;
 
-
-
-const Checktn=()=>{
-  const [toggle,setToggle]=useState(false)
-  return(
-<>
-<Button  variant="contained" onClick={()=>setToggle(true)}>click</Button>
-{toggle && <QandA id={2}/>}
-</>
-
-
- )
-
-
-}
+const Checktn = () => {
+  const [toggle, setToggle] = useState(false);
+  return (
+    <>
+      <Button variant="contained" onClick={() => setToggle(true)}>
+        click
+      </Button>
+      {toggle && <QandA id={2} />}
+    </>
+  );
+};

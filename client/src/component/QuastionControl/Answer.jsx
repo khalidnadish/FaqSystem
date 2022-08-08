@@ -14,12 +14,16 @@ export const StyledBox = styled(Box)(({ theme, expand }) => ({
   padding: "15px",
   backgroundColor: expand ? theme.palette.background.paper : "#f0ebe1",
   color: "white",
-  height: expand ? "auto" : "20%",
+  height: expand ? "auto" : "10%",
   width: expand ? "100%" : "100%",
   marginBottom: "15px",
   textAlign: "justify",
-  transition: "all 3s ease-out",
-  overflow: expand ? null : "hidden",
+  resize: "vertical",
+  // transition: "all 3s ease-out",
+  overflowY: "none",
+  // width: "100%",
+  //   clear: "both",
+  //   display: "inline-block",
 }));
 
 // --------------------------------------------------------------
@@ -34,7 +38,7 @@ export const MaxAndMinStyledBox = styled(Box)(({ theme, expand }) => ({
   borderRadius: "4px",
   color: "red",
   padding: 0,
-  margin: "auto",
+  // margin: "auto",
 }));
 // --------------------------------------------------------------
 
@@ -50,19 +54,18 @@ export const StyledAvatar = styled(Avatar)(({ theme, expand }) => ({
   margin: "auto",
   width: 32,
   height: 32,
-  
-
 }));
 
 export const Styledchip = styled(Chip)(({ theme, expand }) => ({
   position: "absolute",
   top: -10,
   left: 50,
-  boxShadow: "5",
+  boxShadow: 16,
   color: theme.palette.background.paper,
   backgroundColor: theme.palette.primary.light,
-  fontWeight:"lighter",
-  fontSize:'.65rem'
+  fontWeight: "lighter",
+  fontSize: ".65rem",
+  overflow: "visible",
 }));
 
 export const Answer = ({ Answerdata }) => {
@@ -108,13 +111,22 @@ export const Answer = ({ Answerdata }) => {
               </Button>
             </MaxAndMinStyledBox>
             <AnswerOption expand={expand} />
-            <Typography
-              variant="body1"
-              sx={{ color: "grey.600", textAlign: "left" }}
+            <Box
+              sx={{
+                // TODO: overfollow Not Fixed Yet
+                height: "20%",
+                // display: expand ? "block" : "none",
+                overflow: expand ? "hidden" :  "none" ,
+              }}
             >
-              {Answerdata.answer}
-              {/* {qsampl} */}
-            </Typography>
+              <Typography
+                variant="body1"
+                sx={{ color: "grey.600", textAlign: "left" }}
+              >
+                {Answerdata.answer}
+                {/* {qsampl} */}
+              </Typography>
+            </Box>
           </Grid>
         </Grid>
       </StyledBox>
