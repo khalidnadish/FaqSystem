@@ -11,6 +11,16 @@ export function Balance({ }) {
       xpad={"3px 10px 3px 10px"}
       xcolor={"primary"}
       xborderColor="primary.light" // onClick={() => setShowModal(true)}
+
+      xdisableElevation={true}
+      TypographyVariant="caption"
+      TypographyColor="background.paper"
+      TypographySize=".75rem"
+      
+
+
+
+
       toolTip="Balance Click To show Statment" />
   );
 }

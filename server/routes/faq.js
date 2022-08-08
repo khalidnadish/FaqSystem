@@ -8,6 +8,8 @@ import {
   getAllByGroup,
   getFaqByFollowerUser,
   favoriteQuation,
+  QuationDataById,
+  AnswerDataByFAQId
 } from "../controller/faqControl.js";
 
 const router = express.Router();
@@ -22,5 +24,7 @@ router.get("/:faqid", getfaqid);
 router.get("/AnswerByfaqid/:faqid", getAnswerByfaqid);
 router.get("/getAnswerCountByfaqid/:faqid", getAnswerCountByfaqid);
 router.get("/favoriteQuation/:userid", favoriteQuation);
+router.get("/QuationDataById/:id", QuationDataById);
+router.get("/AnswerDataByFAQId/:id", AnswerDataByFAQId);
 
 export default router;

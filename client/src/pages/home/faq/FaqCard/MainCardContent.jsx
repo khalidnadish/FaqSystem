@@ -8,7 +8,8 @@ import { QuastionCounter } from "./QuastionCounter";
 import { ShowAnsewr } from "./ShowAnsewr";
 import CardId from "./CardId";
 import { QuastionStuts } from "./QuastionStuts";
-import { Loader, AnswerDrawer } from "./FaqCards";
+// import { Loader, AnswerDrawer } from "./FaqCards";
+
 
 export function MainCardContent({
   userid,
@@ -21,6 +22,7 @@ export function MainCardContent({
   faqcolseoropen,
 }) {
   const [showReplyDrawer, setShowReplyDrawer] = useState(false);
+  const [open, setOpen] = useState(true);
   return (
     <>
       <Box>
@@ -49,8 +51,9 @@ export function MainCardContent({
           </Grid>
         </Grid>
       </Box>
-      <ShowAnsewr setShowReplyDrawer={setShowReplyDrawer} Quastion={Quastion} userid={userid} groupid={Groupid} qid={faqid} />
-      {showReplyDrawer && (
+     
+      <ShowAnsewr   Quastion={Quastion} userid={userid} groupid={Groupid} qid={faqid} />
+      {/* {showReplyDrawer && (
         <Suspense fallback={<Loader />}>
           <AnswerDrawer
             open={showReplyDrawer}
@@ -58,7 +61,7 @@ export function MainCardContent({
             faqid={faqid}
           />
         </Suspense>
-      )}
+      )} */}
     </>
   );
 }

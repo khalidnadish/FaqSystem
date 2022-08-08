@@ -8,9 +8,7 @@ import React, {
 import { FaqDetail } from "../../../../helper/context/FAQContext";
 import Grid from "@mui/material/Grid";
 import { FixedSizeList } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
-import { Container } from "@mui/system";
-import { Box, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 
 const FaqCrads = lazy(() => import("./FaqCards"));
 const Loader = lazy(() => import("../../../../component/loader/Loader"));

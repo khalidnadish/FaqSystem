@@ -154,6 +154,50 @@ export function favoriteQuation(req, res) {
   });
 }
 
+
+export function QuationDataById(req, res) {
+  const filtercodeIs = parseInt(req.params.id);
+  const sqlStatment = `SELECT faqid,faq,userid,catid,faqcolseoropen,create_at,
+  (SELECT  category.catName FROM category
+   WHERE   category.catid = faq.catId) AS catname,
+  (SELECT  user.username    FROM  user
+   WHERE   user.userid = faq.userid) AS username,
+   (SELECT  user.avatar    FROM  user
+    WHERE   user.userid = faq.userid) AS Qavatar,
+  (SELECT  COUNT(answers.faqid)  FROM  answers
+   WHERE   answers.faqid = faq.faqid) AS replycount FROM  faq
+WHERE  faqid =?`
+
+
+  dataBase.execute(sqlStatment, [filtercodeIs], (err, data) => {
+    err && console.log(err)
+    res.status(200).send(data);
+  });
+}
+
+
+export function AnswerDataByFAQId(req, res) {
+  const filtercodeIs = parseInt(req.params.id);
+  const sqlStatment = `SELECT answers.ansid,answers.answer,answers.userid,answers.faqid,answers.create_at,
+                      (select user.username from user where user.userid=answers.userid) as username,
+                      (select user.avatar from user where user.userid=answers.userid) as avatar 
+                    FROM nadish_site.answers
+                    WHERE answers.faqid=?`
+  
+  dataBase.execute(sqlStatment, [filtercodeIs], (err, data) => {
+    err && console.log(err)
+    res.status(200).send(data);
+  });
+}
+
+
+
+
+
+
+
+
+
 export default {
   getAll,
   getfaqid,
@@ -164,4 +208,7 @@ export default {
   getFaqByFollowerUser,
   getUserCategory,
   favoriteQuation,
+  QuationDataById,
+  AnswerDataByFAQId
+
 };

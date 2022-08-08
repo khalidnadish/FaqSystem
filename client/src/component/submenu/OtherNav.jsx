@@ -23,6 +23,8 @@ import { FaLayerGroup } from "react-icons/fa";
 import { VscLayersActive } from "react-icons/vsc";
 import { GroupCount } from "../../component/submenu/otherNavService";
 import { GroupCountYouFollow } from "../../component/submenu/otherNavService";
+import { Button } from "@mui/material";
+import QandA from "../../component/QuastionControl/QandA";
 
  
 
@@ -175,6 +177,7 @@ function OtherNav({ userId }) {
                     setTypeOfShow={setTypeOfShow}
                   />
                 </Grid>
+                  <Checktn/>
               </Grid>
             </Grid>
           </Grid>
@@ -217,3 +220,19 @@ function OtherNav({ userId }) {
 }
 
 export default OtherNav;
+
+
+
+const Checktn=()=>{
+  const [toggle,setToggle]=useState(false)
+  return(
+<>
+<Button  variant="contained" onClick={()=>setToggle(true)}>click</Button>
+{toggle && <QandA id={2}/>}
+</>
+
+
+ )
+
+
+}
